@@ -1,0 +1,1 @@
+const ingredientModel = require('../models/Ingredient.js');

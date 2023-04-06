@@ -12,7 +12,7 @@ const dotenv = require('dotenv').config({
 //port par defaut pour nodejs
 const port = process.env.NODE_PORT;
 
-const mysql = require('mysql');
+const mysql = require(process.env.DB_VER);
 const connexion = mysql.createConnection({
     host: 'localhost',
     port: process.env.DB_PORT,
