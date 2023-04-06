@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const recetteController = require('./recetteController');
+const path = require("path");
 
-router.get('/recette', recetteController.listeRecettes);
-router.get('/recette/:id', recetteController.afficherRecette);
-router.post('/recette', recetteController.creerRecette);
-router.post('/recette/:id?action=UPDATE', recetteController.modifierRecette);
-router.post('/recette/:id?action=DELETE', recetteController.supprimerRecette);
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views', 'index.html'));
+});
 
-module.exports = router;
+module.exports = router; 
