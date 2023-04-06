@@ -1,1 +1,43 @@
 # nodeJs-recettes
+
+## ROUTES API
+
+1. Les ingredients
+
+- Lister :
+    GET /ingredient
+- Afficher 
+    GET /ingredient/:id
+- Creer :
+    POST /ingredient/
+- Modifier :
+    POST /ingredient/:id?action=UPDATE
+- Supprimer
+    POST /ingredient/:id?action=DELETE
+
+
+2. Les recettes
+
+- Lister :
+    GET /recette
+- Afficher 
+    GET /recette/:id
+- Creer :
+    POST /recette/
+- Modifier :
+    POST /recette/:id?action=UPDATE
+- Supprimer
+    POST /recette/:id?action=DELETE
+
+3. Les repas
+
+- Lister :
+    GET /repas
+- Afficher 
+    GET /repas/:id
+- Creer :
+    POST /repas/
+- Modifier :
+    POST /repas/:id?action=UPDATE
+- Supprimer
+    POST /repas/:id?action=DELETE
