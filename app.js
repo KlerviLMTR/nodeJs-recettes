@@ -26,7 +26,7 @@ app.listen(port, ()=>{
 
 app.get('/',(req,res)=>{
     connexion.query('select * from recette',(err, sql_result)=>{
-        if(err) throw errc
+        if(err) throw err
         res.json(sql_result);
     })
 })
