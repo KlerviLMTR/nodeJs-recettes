@@ -24,9 +24,10 @@ app.listen(port, ()=>{
     log('app lancée sur le port '+ port) ;
 })
 
-app.get('/',(req,res)=>{
-    connexion.query('select * from recette',(err, sql_result)=>{
-        if(err) throw errc
-        res.json(sql_result);
-    })
-})
+// app.get('/',(req,res)=>{
+//     connexion.query('select * from recettes',(err, sql_result)=>{
+//         if(err) throw err
+//         res.json(sql_result);
+//     })
+// })
+
