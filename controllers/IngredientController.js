@@ -1,6 +1,8 @@
 const path = require("path");
 const ingredientModel = require('../models/Ingredient.js');
 const app = require("../app.js");
+
+
 // GET ALL
 exports.all=(req,res)=>{
     sql = "select nom from ingredient";
@@ -38,6 +40,7 @@ exports.insert = (req, res)=>{
             return res.json(data);
     });
 }
+
 
 // UPDATE
 exports.update = (req, res)=>{
