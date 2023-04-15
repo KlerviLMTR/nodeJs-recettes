@@ -2,7 +2,7 @@
 
 ## ROUTES API
 
-1. Les ingredients
+1. Les ingredients : ingredientController.js
 
 - Lister :
     GET /ingredient
@@ -16,7 +16,7 @@
     POST /ingredient/:id?action=DELETE
 
 
-2. Les recettes
+2. Les recettes recetteController.js
 
 - Lister :
     GET /recette
@@ -29,7 +29,7 @@
 - Supprimer
     POST /recette/:id?action=DELETE
 
-3. Les repas
+3. Les repas repasController.js
 
 - Lister :
     GET /repas
@@ -41,3 +41,9 @@
     POST /repas/:id?action=UPDATE
 - Supprimer
     POST /repas/:id?action=DELETE
+
+    4. L'utilisateur (mono utilisateur simple, pas d'auth)
+    - Afficher sa page :
+        GET /utilisateur/
+    - Modifier : 
+        POST /utilisateur/

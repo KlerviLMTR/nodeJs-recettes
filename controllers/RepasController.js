@@ -1,5 +1,4 @@
 const path = require("path");
-const recetteController = require('../models/Ingredient.js');
 const app = require("../app.js");
 
 // GET ALL
