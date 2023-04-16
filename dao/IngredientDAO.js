@@ -11,6 +11,4 @@ class IngredientDAO {
     
 }
 
-// ici j'exporte la classe instanciée
-// je vais donc pouvoir utiliser ses fonctions directement sans avoir à la réinstancier partout
 module.exports = new IngredientDAO();

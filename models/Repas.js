@@ -9,4 +9,4 @@ class Repas {
 }
 
 //Export de la classe non instanciee dans les modules
-module.exports = Repas
+module.exports = Repas;

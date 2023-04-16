@@ -20,12 +20,12 @@
     // Pour le traitement des résultats de requêtes
     //app.use(bodyParser.json());
     
-    //Definition du routage poru bootstrap
+    //Definition du routage pour bootstrap
     app.use(express.static(__dirname + 'public'));
     app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
     app.use('/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
-    app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
-    app.use('/css-custom', express.static(path.join(__dirname, 'public/css')));
+    app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
+    app.use('/css', express.static(path.join(__dirname, 'public/css')));
     app.use('/images', express.static(path.join(__dirname, 'public/img')));
     
     // Definition du repertoire de reference pour les vues "dynamiques" (template ejs)
