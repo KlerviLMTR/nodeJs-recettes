@@ -1,7 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Galada&display=swap");
-/*!
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap"); /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
@@ -10821,18 +10819,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-#accueil {
-  width: 100%;
-  background-color: rgb(118, 147, 137);
-  background-image: url("/images/fond.svg");
-  background-size: cover;
-  color: white;
-  box-shadow: 0px 4px 7px 4px rgba(18, 2, 2, 0.479);
-  padding-top: 30vh;
-  padding-bottom: 30vh;
-  z-index: 3;
-}
-
 .nav-item a {
   font-family: "Poppins", sans-serif;
 }
@@ -10841,8 +10827,11 @@ textarea.form-control-lg {
   height: 40px;
 }
 
-.container {
-  margin: 0px;
+header {
+  height: 150px;
+  background-image: url("/images/fond.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -10855,14 +10844,6 @@ textarea.form-control-lg {
 }
 
 h1, .h1 {
-  color: #005248;
-  font-family: "Galada", cursive;
-  font-size: 4em;
-  letter-spacing: 3px;
-  text-align: center;
-}
-
-h2, .h2 {
   margin-top: 20px;
   color: #302b2b;
   font-size: 1.5em;
@@ -10958,7 +10939,7 @@ footer div {
 }
 @media screen and (max-width: 1100px) {
   h1, .h1 {
-    font-size: 48px;
+    font-size: 2em;
   }
   p {
     font-size: 1em;
@@ -10991,7 +10972,7 @@ footer div {
     height: 30px;
   }
   h1, .h1 {
-    font-size: 3em;
+    font-size: 2em;
   }
   #burger span {
     width: 23px;

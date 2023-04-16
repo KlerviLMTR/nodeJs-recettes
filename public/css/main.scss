@@ -1,21 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap');
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
 
 // ----------------------- HEADER -------------------------
-#accueil{
-    width: 100%;
-    background-color: rgb(118, 147, 137);
-    background-image: url("/images/fond.svg");
-    background-size:cover;
-    color:white;
-    box-shadow: 0px 4px 7px 4px rgba(18, 2, 2, 0.479) ;
-    padding-top:30vh;
-    padding-bottom:30vh;
-    z-index: 3;
-}
+
 
 .nav-item{
     a{
@@ -24,14 +13,20 @@
     }
 }
 
+
 #logo{
     height:40px;
 }
-.container{
-    margin:0px;
+
+
+
+
+header{
+    height:150px;
+    background-image: url('/images/fond.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-
 
 .custom-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(118, 180, 175, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
@@ -42,16 +37,10 @@
     border-width: 2px;
   } 
 
-h1{
-    color: #005248;
-    font-family: 'Galada', cursive;
-    font-size: 4em;
-    letter-spacing: 3px;
-    text-align: center;
-}
+
 // ------------------------- CORPS PRINCIPAL ---------------------------
 
-h2{
+h1{
     margin-top :20px;
     color:#302b2b;
     font-size: 1.5em;
@@ -177,7 +166,7 @@ footer{
 
 @media screen and (max-width: 1100px){
     h1{
-        font-size: 48px;
+        font-size: 2em;
     }
 
     p{
@@ -231,7 +220,7 @@ footer{
 
     
     h1{
-        font-size: 3em;
+        font-size: 2em;
     }
 
     #burger{
