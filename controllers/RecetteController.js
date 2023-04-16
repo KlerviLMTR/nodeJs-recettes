@@ -1,13 +1,12 @@
-var express = require('express');
-var router = express.Router();
-// let recetteService = require('../services/RecetteService')
+const express = require('express');
+const router = express.Router();
+const recetteService = require('../services/RecetteService')
 
-router.get('/recettes', function(req, res, next) {
+router.get('/', function(req, res, next) {
   
-    // let ingredientTrouves = recetteService.voirTousLesIngredients(); 
   
-    res.render('index');
+    res.render('recettes');
   
   });
   
-exports.router = router;
+  module.exports = router;

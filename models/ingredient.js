@@ -1,10 +1,11 @@
 
 class Ingredient {
 
-    constructor(nom,cout,unite) {
+    constructor(nom,cout,unite,img) {
         this.nom = nom;
         this.cout = cout;
         this.unite = unite;
+        this.img = img;
     }
 }
 

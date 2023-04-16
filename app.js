@@ -8,8 +8,11 @@
     // (choix de confondre routeurs et controleurs comme il s'agit d'une petite appli.)
     const indexRouter = require('./controllers/indexController');
     const ingredientRouter = require('./controllers/IngredientController');
-    // const recetteRouter = require('./controllers/RecetteController');
-    
+    const recetteRouter = require('./controllers/RecetteController');
+    const repasRouter = require('./controllers/RepasController');
+    const coursesRouter = require('./controllers/CoursesController');
+    const utilisateurRouter = require('./controllers/UtilisateurController');
+
     
     // demarrage d'express
     const app = express();
@@ -33,9 +36,11 @@
     // redirection vers les bons controleurs selon l'endpoint demande
     app.use('/', indexRouter);
     app.use('/ingredients', ingredientRouter);
-    // app.use('/recettes', recetteRouter);
-    
-    
+    app.use('/recettes', recetteRouter);
+    app.use('/repas', repasRouter);
+    app.use('/liste', coursesRouter);
+    app.use('/utilisateur', utilisateurRouter);
+
     const dotenv = require('dotenv').config({
         path: path.join(__dirname, '.env')
     });

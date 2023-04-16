@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-let miamService = require('../services/MiamService')
-let ingredientService = require('../services/IngredientService')
+const utilisateurService = require('../services/UtilisateurService')
 
-router.get('/utilisateur', function(req, res, next) {
+router.get('/', function(req, res, next) {
   
-    // res.send("COUCOU TOTO");
-    res.render('index', { ingredients: ingredientTrouves });
+    // let ingredientTrouves = recetteService.voirTousLesIngredients(); 
+  
+    res.render('utilisateur');
   
   });
-exports.router = router;
+  
+  module.exports = router;
