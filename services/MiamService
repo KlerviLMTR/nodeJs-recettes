@@ -12,11 +12,6 @@ class MiamService {
         return this.#ingredientDAO.voirTousLesIngredients()
     }
 }
-
-// ici j'exporte la classe instanciée
-// je vais donc pouvoir utiliser ses fonctions directement sans avoir à la réinstancier partout
-// BouffeService prend en paramètre un IngredientDAO, je le charge direct en utilisant le require, j'aurais pu faire un ligne intermédiaire : 
-// let ingredientDAO = require('../dao/IngredientDAO')
-// module.exports = new BouffeService(ingredientDAO)
+// Export du service dans les modules, instancie pour qu'il soit accessible partout en permanence.
 let ingredientDAO = require('../dao/IngredientDAO')
 module.exports = new MiamService(ingredientDAO)

@@ -1,0 +1,247 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap');
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+
+// ----------------------- HEADER -------------------------
+#accueil{
+    width: 100%;
+    background-color: rgb(118, 147, 137);
+    background-image: url("/images/fond.svg");
+    background-size:cover;
+    color:white;
+    box-shadow: 0px 4px 7px 4px rgba(18, 2, 2, 0.479) ;
+    padding-top:30vh;
+    padding-bottom:30vh;
+    z-index: 3;
+}
+
+.nav-item{
+    a{
+        font-family: 'Poppins', sans-serif;
+
+    }
+}
+
+#logo{
+    height:40px;
+}
+.container{
+    margin:0px;
+}
+
+
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(118, 180, 175, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  
+  .custom-toggler.navbar-toggler {
+    border-color: rgb(118, 180, 175);
+    border-width: 2px;
+  } 
+
+h1{
+    color: #005248;
+    font-family: 'Galada', cursive;
+    font-size: 4em;
+    letter-spacing: 3px;
+    text-align: center;
+}
+// ------------------------- CORPS PRINCIPAL ---------------------------
+
+h2{
+    margin-top :20px;
+    color:#302b2b;
+    font-size: 1.5em;
+    text-align: center;
+    letter-spacing: 3px;
+    font-family: 'Poppins', sans-serif;
+}
+
+p{
+    color:rgb(39, 39, 39);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    text-align: justify;
+    
+}
+
+#bg{
+    width:100%;
+    background-color: #efe7d1;
+    justify-content: center;
+    display: flex;
+}
+
+#main{
+    background-color: white;
+    width:80%; 
+    padding:30px 50px;
+
+
+}
+
+
+#logo-cont{
+    display: flex;
+    justify-content: center;
+    img{
+        height:100px;
+    }
+    margin: 50px 0px;
+}
+
+
+#btn{
+    margin:0 auto;
+    background-color:#FEB700;
+    width: 200px;
+    border-radius: 5px;
+    transform: all 0.6 ease-out;
+    box-shadow: 0px 0px 3px 2px rgba(165, 154, 154, 0.311) ;
+    p{
+        font-size:1em;
+        color:rgb(255, 255, 255);
+        font-weight: 600;
+    }
+
+
+}
+
+
+
+
+
+footer{
+    background-color: #4B8178;
+    padding-top:30px;
+    a{
+        
+        text-decoration: none;
+        color:#ffffff;
+        cursor: pointer;
+    }
+    a:hover{
+        color:#FEB700;
+    }
+    div{
+        display: flex;
+        flex-wrap: nowrap;
+        position:relative;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+#end-footer{
+    background-color: #005248;
+    color:#FEB700;
+    font-weight: 600;
+    a{
+        color:#FEB700;
+   
+    }
+}
+
+
+
+
+
+
+
+
+// RESPONSIVE
+
+@media screen and (max-width: 1500px){
+
+    .nav-item{
+        font-size:1em;
+    }
+
+    p{
+        font-size: 1em;
+    }
+
+
+}
+
+
+
+@media screen and (min-width: 1100px){
+    .container{
+        padding:20px 70px !important;
+    }
+}
+
+@media screen and (max-width: 1100px){
+    h1{
+        font-size: 48px;
+    }
+
+    p{
+        font-size: 1em;
+    } 
+
+}
+
+.sr-only{
+    padding:10px;
+}
+
+
+@media screen and (max-width: 600px){
+    p{
+        font-size: 1em;
+        padding:5px !important;
+    }
+
+   
+   section{
+    p{
+        text-align: left;
+        font-size: 0.8em;
+    }
+   }
+
+
+   
+    footer{
+        div{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+}
+
+
+
+@media screen and (max-width: 500px){
+    #main{
+        width:100%;
+        padding:10px;
+        
+    }
+
+    #logo{
+        height:30px;
+    }
+
+    
+    h1{
+        font-size: 3em;
+    }
+
+    #burger{
+
+        span{
+            width:23px;
+
+        }
+    }
+
+
+}
+

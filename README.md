@@ -47,3 +47,8 @@
         GET /utilisateur/
     - Modifier : 
         POST /utilisateur/
+
+
+## Architecture de l'appli
+
+- Appli decoupee en Controleurs - Services - DAO - Modeles

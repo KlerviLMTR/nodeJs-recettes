@@ -1,5 +1,8 @@
-const path = require("path");
-const app = require("../app.js");
+const express = require('express');
+const router = express.Router();
+let recetteService = require('../services/RecetteService')
+
+exports.router = router;
 
 // GET ALL
 exports.all=(req,res)=>{

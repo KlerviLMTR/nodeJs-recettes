@@ -4,7 +4,7 @@ class IngredientDAO {
 
     voirTousLesIngredients = () => {
 
-        // ici je fais mes requêtes SQL ^^
+        const sql = "SELECT nom FROM ingredient ORDER BY nom;";
 
         return [new Ingredient("ingredient 1"), new Ingredient("ingredient 2"), new Ingredient("ingredient 3")];
     }
