@@ -10955,6 +10955,10 @@ footer div {
     font-size: 1em;
     padding: 5px !important;
   }
+  h1, .h1 {
+    margin-top: 0px;
+    font-size: 1.5em;
+  }
   section p {
     text-align: left;
     font-size: 0.8em;
@@ -10973,7 +10977,7 @@ footer div {
     height: 30px;
   }
   h1, .h1 {
-    font-size: 2em;
+    font-size: 1.6em;
   }
   #burger span {
     width: 23px;
