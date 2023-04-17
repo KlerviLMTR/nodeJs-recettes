@@ -6,7 +6,7 @@ class IngredientService {
         this.#miamService = miamService;
     }
 
-    voirTousLesIngredients = () => {
+    voirTousLesIngredients () {
         return this.#miamService.voirTousLesIngredients();
     }
     

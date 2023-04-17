@@ -6,7 +6,9 @@
   router.get('/', function(req, res, next) {
     
     let ingredientTrouves = ingredientService.voirTousLesIngredients(); 
-   res.render('ingredients', { ingredients: ingredientTrouves });
+  res.send(ingredientTrouves);
+    //  res.render('ingredients', { ingredients: ingredientTrouves });
+     
 
   });
 

@@ -15,7 +15,7 @@ class MiamService {
 
     }
 
-    voirTousLesIngredients = () => {
+    voirTousLesIngredients () {
         return this.#ingredientDAO.voirTousLesIngredients()
     }
 }

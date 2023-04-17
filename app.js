@@ -32,7 +32,7 @@
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'ejs');
     
-    
+
     // redirection vers les bons controleurs selon l'endpoint demande
     app.use('/', indexRouter);
     app.use('/ingredients', ingredientRouter);
@@ -48,7 +48,7 @@
     //port par defaut pour nodejs
     const port = process.env.NODE_PORT;
     
-    const mysql = require(process.env.DB_VER);
+    mysql = require(process.env.DB_VER);
     connexion = mysql.createConnection({
         host: 'localhost',
         port: process.env.DB_PORT,
@@ -56,7 +56,7 @@
         password: process.env.DB_PASSWD,
         database: process.env.DB_NAME
     })
-    module.exports = connexion; 
+    connexion.connect();
     
     app.listen(port, () => {
         log('app lancée sur le port ' + port);
@@ -73,4 +73,7 @@
         res.render('error');
     });
     
-    module.exports = app;
+    module.exports = app
+
+   
+

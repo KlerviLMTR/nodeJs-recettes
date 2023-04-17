@@ -4,8 +4,8 @@ const utilisateurService = require('../services/UtilisateurService')
 
 router.get('/', function(req, res, next) {
   
-    // let ingredientTrouves = recetteService.voirTousLesIngredients(); 
-  
+    let ingredientTrouves = recetteService.voirTousLesIngredients(); 
+    
     res.render('utilisateur');
   
   });
