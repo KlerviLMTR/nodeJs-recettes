@@ -6,9 +6,11 @@ class IngredientService {
         this.#miamService = miamService;
     }
 
-    voirTousLesIngredients () {
-        return this.#miamService.voirTousLesIngredients();
-    }
+        voirTousLesIngredients  = (callback) => {
+            return this.#miamService.voirTousLesIngredients(callback);
+        }
+
+   
     
 }
 let miamService = require('./MiamService');

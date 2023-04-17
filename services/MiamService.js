@@ -15,8 +15,12 @@ class MiamService {
 
     }
 
-    voirTousLesIngredients () {
-        return this.#ingredientDAO.voirTousLesIngredients()
+    voirTousLesIngredients = (callback) => {
+        return this.#ingredientDAO.voirTousLesIngredients(callback);
+    }
+
+    toString(){
+        return "je suis le service principal de l'application !";
     }
 }
 // Export du service dans les modules, instancie pour qu'il soit accessible partout en permanence.

@@ -4,9 +4,12 @@
   let ingredientService = require('../services/IngredientService')
 
   router.get('/', function(req, res, next) {
-    
-    let ingredientTrouves = ingredientService.voirTousLesIngredients(); 
-  res.send(ingredientTrouves);
+
+    let callback = (listeDesIngredients)=>{
+      res.send(listeDesIngredients);
+    }
+    ingredientService.voirTousLesIngredients(callback); 
+
     //  res.render('ingredients', { ingredients: ingredientTrouves });
      
 
