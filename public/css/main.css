@@ -10845,6 +10845,7 @@ header #bandeau {
 #bordure {
   position: sticky;
   top: 66px;
+  z-index: 4;
   width: 100%;
   height: 20px;
   background-image: url("/images/bordure.svg");
@@ -10901,7 +10902,7 @@ p {
   height: 100px;
 }
 
-#btn {
+#btn, .btn-princ {
   margin: 0 auto;
   background-color: #FEB700;
   width: 200px;
@@ -10909,10 +10910,95 @@ p {
   transform: all 0.6 ease-out;
   box-shadow: 0px 0px 3px 2px rgba(165, 154, 154, 0.311);
 }
-#btn p {
+#btn p, .btn-princ p {
   font-size: 1em;
   color: rgb(255, 255, 255);
   font-weight: 600;
+}
+
+#options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80%;
+}
+#options .btn {
+  position: relative;
+  height: 30px;
+  margin: 0 auto;
+  background-color: #8ddacc;
+  width: 260px;
+  z-index: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  transform: all 0.6 ease-out;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 3px 2px rgba(165, 154, 154, 0.311);
+}
+#options .btn p {
+  padding-top: 15px;
+  padding-left: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+#options .btn img {
+  align-self: center;
+  width: 35px;
+}
+#options #search {
+  margin: 0 auto;
+  border: 5px solid #FEB700;
+  border-radius: 30px;
+  width: 250px;
+  padding: 8px;
+}
+
+#all {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 50px;
+  width: 90%;
+  box-shadow: 0px 5px 4px 6px rgba(68, 68, 68, 0.132);
+}
+#all .img-thumbnail {
+  width: 45px;
+  border: none;
+}
+#all th {
+  padding: 20px 0px;
+}
+#all .btn {
+  background-color: #4B8178;
+  width: 48px;
+  padding: 6px 3px;
+}
+#all .btn:hover {
+  background-color: #7fc0b5;
+  box-shadow: 0px 0px 4px 2px rgba(64, 60, 60, 0.187);
+  transform: scale(1.1);
+  z-index: 0;
+}
+#all #edit {
+  height: 30px;
+}
+#all #del {
+  height: 30px;
+}
+#all #btn-del {
+  background-color: #ca4848;
+}
+#all #btn-del:hover {
+  background-color: #ec7575;
+}
+#all #btn-up {
+  background-color: #72c9ba;
+}
+#all th, #all td {
+  font-family: "Poppins", sans-serif;
 }
 
 footer {
@@ -10978,6 +11064,9 @@ footer div {
     margin-top: 0px;
     font-size: 1.5em;
   }
+  #main {
+    width: 95%;
+  }
   section p {
     text-align: left;
     font-size: 0.8em;
@@ -10988,6 +11077,24 @@ footer div {
   }
 }
 @media screen and (max-width: 500px) {
+  .container {
+    padding: 0 !important;
+  }
+  #all {
+    padding: 10px !important;
+    border-radius: 10px;
+  }
+  #all td, #all th {
+    width: 10%;
+    font-size: 0.7em;
+  }
+  #all .img-thumbnail, #all .btn {
+    width: 35px;
+    height: 35px;
+  }
+  #all #del, #all #edit {
+    height: 20px;
+  }
   #main {
     width: 100%;
     padding: 10px;

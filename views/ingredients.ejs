@@ -10,6 +10,7 @@
   <script src="/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="/css/main.css">
+  <script src="./js_custom/utils.js"></script>
 
   
 </head>
@@ -68,11 +69,59 @@
         <h1>Les ingrédients</h1>
       
         <hr>
-        <% ingredients.forEach(function(ingredient) { %>
+        <!-- <% ingredients.forEach(function(ingredient) { %>
           <li>
               <strong><%= ingredient.nom %></strong>
           </li>
-      <% }); %>
+      <% }); %> -->
+
+      <!-- <% console.log(ingredients)%> -->
+      <!-- Fichier ingredients.ejs -->
+      <div id="options">
+        <a href="/ingredients/creer" class="btn btn-princ" ><img src="/images/icons/add.png"  alt="edit"><p  >Ajouter un ingrédient</p></a>
+        <div class="form-group" >
+            <input type="text" class="form-control" id="search" placeholder="Rechercher un ingrédient...">
+          </div>
+      </div>
+<!-- Barre de recherche -->
+<!-- <div class="container px-2 py-3" id="all"> -->
+
+
+
+    <!-- Tableau Bootstrap -->
+    <table class="table align-middle container px-2 py-3 text-center " id="all">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Nom</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < ingredients.length; i++) { %>
+          <tr>
+            <td >
+              <img src="<%= ingredients[i].img %>" alt="<%= ingredients[i].nom %>" class="img-thumbnail">
+            </td>
+            <td><%= ingredients[i].nom %></td>
+            <td>
+        
+              <a href="/ingredients/<%= ingredients[i].id %>" class="btn" id="btn-update" ><img src="/images/icons/edit.png" id="edit" class="del-mod-icons" alt="edit"></a>
+            </td>
+            <td>
+     
+              <a href="/ingredients/<%= ingredients[i].id %>?action=DELETE" class="btn" id="btn-del" ><img src="/images/icons/trash.png" id="del" class="del-mod-icons" alt="trash"></a>
+
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  <!-- </div> -->
+
+
+
 
  
     </div>
@@ -106,3 +155,8 @@
         
       </body>
       </html>
+
+      <script>
+        // Filtrer les ingrédients selon la recherche de l'utilisateur
+          rechercherTab();
+      </script>

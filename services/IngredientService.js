@@ -1,3 +1,4 @@
+const Ingredient = require('../models/Ingredient');
 class IngredientService {
 
     #miamService;
@@ -7,11 +8,25 @@ class IngredientService {
     }
 
         voirTousLesIngredients  = (callback) => {
-            return this.#miamService.voirTousLesIngredients(callback);
+            //Construire le tableau qui contiendra tous les modeles ingredient
+            let callbackIntermediaire = (jsonDAO) =>{
+                let ingredients = [];
+                for(let i = 0; i < jsonDAO.length ; i++){
+                    const ingredient = new Ingredient(jsonDAO[i].idIng, jsonDAO[i].nom,null,null, jsonDAO[i].img, null);
+                    ingredients.push(ingredient);
+
+                  
+                }
+                  //Appel au callback DAO
+                  callback(ingredients);
+                //
+            }
+            return this.#miamService.voirTousLesIngredients(callbackIntermediaire);
         }
 
    
     
 }
+const { json } = require('body-parser');
 let miamService = require('./MiamService');
 module.exports = new IngredientService(miamService)

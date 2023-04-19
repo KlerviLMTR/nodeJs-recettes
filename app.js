@@ -27,7 +27,8 @@
     app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
     app.use('/css', express.static(path.join(__dirname, 'public/css')));
     app.use('/images', express.static(path.join(__dirname, 'public/img')));
-    
+    app.use('/js_custom', express.static(path.join(__dirname, 'public/js')));
+
     // Definition du repertoire de reference pour les vues "dynamiques" (template ejs)
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'ejs');

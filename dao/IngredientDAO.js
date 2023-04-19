@@ -3,12 +3,15 @@ const Ingredient = require('../models/Ingredient');
 
 class IngredientDAO {
     voirTousLesIngredients = (callback) => {
-      const sql = "SELECT nom FROM ingredient;";
+      const sql = "SELECT idIng, nom, img FROM ingredient ORDER BY nom;";
       connexion.query(sql,(err,data)=>{
         if (err)
           return err;
-        else
-          return callback(data);
+        else{
+          callback(data);
+        }
+          
+          
       })
 
     }

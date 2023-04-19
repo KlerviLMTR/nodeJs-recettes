@@ -6,7 +6,9 @@
   router.get('/', function(req, res, next) {
 
     let callback = (listeDesIngredients)=>{
-      res.send(listeDesIngredients);
+      res.render('ingredients', { ingredients: listeDesIngredients });
+
+      
     }
     ingredientService.voirTousLesIngredients(callback); 
 

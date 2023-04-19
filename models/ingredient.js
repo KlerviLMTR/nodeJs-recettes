@@ -1,7 +1,8 @@
 
 class Ingredient {
 
-    constructor(nom,cout,unite,img) {
+    constructor(id,nom,cout,unite,img) {
+        this.id = id;
         this.nom = nom;
         this.cout = cout;
         this.unite = unite;
