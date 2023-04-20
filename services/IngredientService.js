@@ -24,6 +24,11 @@ class IngredientService {
             return this.#miamService.voirTousLesIngredients(callbackIntermediaire);
         }
 
+        supprimerIngredient  = (id, callback) => {
+            //Construire le tableau qui contiendra tous les modeles ingredient
+          
+            return this.#miamService.supprimerIngredient(id, callback);
+        }
    
     
 }

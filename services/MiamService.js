@@ -15,8 +15,13 @@ class MiamService {
 
     }
 
-    voirTousLesIngredients = (callback) => {
-        return this.#ingredientDAO.voirTousLesIngredients(callback);
+    voirTousLesIngredients = (id, callback) => {
+        return this.#ingredientDAO.voirTousLesIngredients(id, callback);
+    }
+
+    supprimerIngredient  = (id, callback) => {
+       
+        return this.#ingredientDAO.supprimerIngredient(id, callback);
     }
 
     toString(){
