@@ -7,17 +7,15 @@ router.use(bodyParser.urlencoded({extended:true}));
 
 
 router.get('/', function(req, res, next) {
-  res.render('recettes');
-  // let callback = (listeDesRecettes)=>{
-    // res.render('recettes', { recettes: listeDesRecettes });
-  // }
+  let callback = (listeDesRecettes,listeDesIngredients)=>{
+    // console.log(listeDesRecettes[0][intitule])
+    res.render('recettes', { recettes: listeDesRecettes });
+  }
 
-  // recetteService.voirToutesLesRecettes(callback); 
+  recetteService.voirToutesLesRecettes(callback); 
 });
 
 router.get('/creer',function(req,res,next){
-  //Ici on va devoir faire appel au service ingredientDAO pour fetch tous les ingredients necessaires a
-  //la création des recettes
 
   let callback = (ingredients) =>{
     res.render('fiche-recette', {ingredients : ingredients})
