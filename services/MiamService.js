@@ -57,7 +57,6 @@ class MiamService {
     //  -------- RECETTES ----------
     
     voirToutesLesRecettes = (callback) =>{
-            //Construire le tableau qui contiendra tous les modeles ingredient
         let callbackIntermediaire = (jsonDAORecettes, jsonDAOIngredients) =>{
             let recettes = [];
           
@@ -66,19 +65,20 @@ class MiamService {
                 //Creer le tableau d'ingredient vide pour chaque recette
                 let tabIng = new Array();
                 const recette = new Recette(jsonDAORecettes[i].idrecette,jsonDAORecettes[i].intitule, jsonDAORecettes[i].nbcouverts,jsonDAORecettes[i].deroule, tabIng, jsonDAORecettes[i].img );
+                
                 //parcourir le tableau des ingredients et verifier s'il est present dans la recette en cours
                 for (let i = 0 ; i< jsonDAOIngredients.length;i++){
+                    
                     // S'ils ont le meme idrecette, l'ajouter au tableau
                     if(jsonDAOIngredients[i].idRecette == recette.id){
                         //creer l'ingredient
                         let ingredient = new Ingredient(jsonDAOIngredients[i].idIng, jsonDAOIngredients[i].nom, jsonDAOIngredients[i].cout, jsonDAOIngredients[i].unite, jsonDAOIngredients[i].img);       
                          recette.tabIng.push(ingredient)
                     }
-             
                 }
-
+                recettes.push(recette);
             }
-            //Appel au callback DAO
+         
             callback(recettes);
             
         }

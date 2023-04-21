@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="/css/main.css">
   <script src="./js_custom/utils.js"></script>
-
+  
   
 </head>
 <body>
@@ -49,82 +49,134 @@
     </div>
   </nav>
   <!-- Fin Navbar -->
-
+  
   <!-- header -->
   <div id="cont-sticky">
-  <header>
-    <div id="bandeau"></div>
-  </header>
-  <div id="bordure"></div>
-
-  <!-- Fin  header -->
-  
-  <!-- Main -->
-  <div id="bg">
-
-    <!-- Prevoir margin pour sticky -->
-    <div id="main" class="container py-5 px-2">
-     
-
-        <h1>Mes recettes</h1>
+    <header>
+      <div id="bandeau"></div>
+    </header>
+    <div id="bordure"></div>
+    
+    <!-- Fin  header -->
+    
+    <!-- Main -->
+    <div id="bg">
       
+      <!-- Prevoir margin pour sticky -->
+      <div id="main" class="container py-5 px-2">
+        
+        
+        <h1>Mes recettes</h1>
+        
         <hr>
-  
-      <div id="options">
-        <a href="/recettes/creer" class="btn btn-princ" ><img src="/images/icons/add.png"  alt="edit"><p  >Ajouter une recette</p> </a>         <input type="text" class="form-control" id="search" placeholder="Rechercher une recette...">
-       
-  
-      </div>
-<!-- Barre de recherche -->
-<!-- <div class="container px-2 py-3" id="all"> -->
 
+        <div id="options">
+          <a href="/recettes/creer" class="btn btn-princ" ><img src="/images/icons/add.png"  alt="edit"><p  >Ajouter une recette</p> </a>         <input type="text" class="form-control" id="search" placeholder="Rechercher une recette...">  
+        </div>
+          
+          <div id="cards-cont">
+            <div class="row">
+              
+                  <% for(let i=0; i<recettes.length; i++){ %>
+                    <div class="card" style="width: 18.5rem;">
+                      <div class="card-body">
+                        <img class="card-img-top" src="<%= recettes[i].img %>" alt="Card image cap">
+                        <h6 class="card-title"><%= recettes[i].intitule %></h6>
+                        <hr>
+                        <div class="d-flex  justify-content-center align-items-baseline">
+                          <img src="/images/couverts.svg" style="height:40px;padding-right:10px; " alt="">
+                          <p>8 personnes</p>
+                        </div>
+                        <div class="row">
+                          <div class="d-flex  justify-content-center align-items-baseline">
 
+                            <a href="" class="btn btn-submit">Voir la fiche</a>
+                            <a href="/ingredients/<%= recettes[i].id %>?action=DELETE" name="<%= recettes[i].id %>" class="btn btn-del" ><img src="/images/icons/trash.png" class="del-mod-icons del" alt="trash"></a>
+                          </div>
+                        </div>
+                       
 
-    <!-- Tableau Bootstrap -->
-   
-  <!-- </div> -->
-
-  <script>
- 
-
-  </script>
-
-
-
- 
-    </div>
-  </div>
-</div>
-
-        <!-- Fin Main -->
-        
-        
-        <!-- FOOTER -->
-        
-        
-        <footer>
-          <div class=" p-4" id="footerCont">
+                      </div>
+                    </div>
+                    <% } %>
+              
+              
+             
+            </div>
             
-            <div class="col-lg-3  mb-4">
-              <h5 class="mb-3"><a href="#">À propos </a></h5>
-            </div>
-            <div class="col-lg-3  mb-4">
-              <h5 class="mb-3"><a href="#">Mentions légales</a></h5>
-            </div>
-            <div class="col-lg-3  mb-4">
-              <h5 class="mb-3"><a href="#">Contact</a></h5>
-            </div>
+            
           </div>
-          <div id="end-footer"class="text-center p-3" >
-            Klervi LM - © 2023 Copyright:
-            <a  href="https://mdbootstrap.com/">MDBootstrap.com</a>
-          </div>
-        </footer>
+          
+          <!-- Tableau Bootstrap -->
+          
+          <!-- </div> -->
+          
+          <script>
+            //Calculer le nombre de lignes
+          </script>
+          
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- Fin Main -->
+    <script>
+      function rechRecettes() {
+        // Récupère les caracteres recherches
+        var input = document.getElementById("search");
+        // Récupère les cartes de recettes
+        var cards = document.getElementsByClassName("card");
         
-      </body>
-      </html>
+        // Convertit les cartes en tableau a partir de toutes les cartes recup par getEleemntsByClassName
+        var cardsArray = Array.prototype.slice.call(cards);
+        
+        // Boucle sur chaque carte pour afficher ou masquer en fonction de la recherche
+        cardsArray.forEach(function(card) {
+          // Récupère le titre de la recette
+          var title = card.querySelector(".card-title").textContent.toLowerCase();
+          
+          // Vérifier si le titre de la recette contient la recherche
+          if (title.indexOf(input.value.toLowerCase()) > -1) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
 
-      <script>
-        // Filtrer les ingrédients selon la recherche de l'utilisateur
-          rechercherTab();
-      </script>
+        
+      }
+      
+      // Attache la fonction à l'événement "keyup" de l'élément d'entrée de recherche
+      document.getElementById("search").addEventListener("keyup", rechRecettes);
+      
+    </script>
+    
+    <!-- FOOTER -->
+    
+    
+    <footer>
+      <div class=" p-4" id="footerCont">
+        
+        <div class="col-lg-3  mb-4">
+          <h5 class="mb-3"><a href="#">À propos </a></h5>
+        </div>
+        <div class="col-lg-3  mb-4">
+          <h5 class="mb-3"><a href="#">Mentions légales</a></h5>
+        </div>
+        <div class="col-lg-3  mb-4">
+          <h5 class="mb-3"><a href="#">Contact</a></h5>
+        </div>
+      </div>
+      <div id="end-footer"class="text-center p-3" >
+        Klervi LM - © 2023 Copyright:
+        <a  href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      </div>
+    </footer>
+    
+  </body>
+  </html>
+  
+  

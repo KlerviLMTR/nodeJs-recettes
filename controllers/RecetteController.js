@@ -8,7 +8,6 @@ router.use(bodyParser.urlencoded({extended:true}));
 
 router.get('/', function(req, res, next) {
   let callback = (listeDesRecettes,listeDesIngredients)=>{
-    // console.log(listeDesRecettes[0][intitule])
     res.render('recettes', { recettes: listeDesRecettes });
   }
 

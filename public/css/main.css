@@ -10886,7 +10886,7 @@ p {
 
 #main {
   background-color: white;
-  width: 80%;
+  width: 85%;
   padding: 170px 50px 30px 50px;
 }
 
@@ -11015,46 +11015,72 @@ p {
   background-color: white;
 }
 
-#all {
+#all, .card {
   margin-top: 30px;
   margin-bottom: 30px;
-  border-radius: 50px;
+  border-radius: 20px;
   width: 90%;
   box-shadow: 0px 5px 4px 6px rgba(68, 68, 68, 0.132);
 }
-#all .img-thumbnail {
+#all .img-thumbnail, .card .img-thumbnail {
   width: 45px;
   height: 45px;
   border: none;
 }
-#all th {
+#all th, .card th {
   padding: 20px 0px;
 }
-#all .btn {
+#all .btn, .card .btn {
+  margin-right: 20px;
   background-color: #4B8178;
-  width: 48px;
-  padding: 6px 3px;
+  padding: 9px 3px;
 }
-#all .btn:hover {
+#all .btn:hover, .card .btn:hover {
   background-color: #7fc0b5;
   box-shadow: 0px 0px 4px 2px rgba(64, 60, 60, 0.187);
   transform: scale(1.1);
   z-index: 0;
 }
-#all #edit {
-  height: 30px;
+#all .edit, .card .edit {
+  height: 25px;
+  margin: 1px 5px;
 }
-#all #del {
-  height: 30px;
+#all .del, .card .del {
+  height: 25px;
+  margin: 1px 5px;
 }
-#all #btn-del {
+#all .btn-del, .card .btn-del {
   background-color: #ca4848;
 }
-#all #btn-del:hover {
+#all .btn-del:hover, .card .btn-del:hover {
   background-color: #ec7575;
 }
-#all #btn-up {
+#all .btn-up, .card .btn-up {
   background-color: #72c9ba;
+}
+
+#cards-cont {
+  display: flex;
+}
+#cards-cont .row {
+  justify-content: center;
+}
+
+.card {
+  margin: 8px;
+}
+.card h6, .card .h6 {
+  margin-top: 10px;
+}
+.card .card-img-top {
+  height: 200px;
+  border: 5px solid #7fc0b5;
+}
+.card .btn-submit {
+  width: 140px;
+}
+.card hr {
+  margin: 3px 0px 15px 0px;
 }
 
 footer {
@@ -11121,7 +11147,7 @@ footer div {
     font-size: 1.5em;
   }
   #main {
-    width: 95%;
+    width: 90%;
   }
   section p {
     text-align: left;

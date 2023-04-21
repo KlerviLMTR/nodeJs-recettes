@@ -69,25 +69,12 @@
         <h1>Les ingrédients</h1>
       
         <hr>
-        <!-- <% ingredients.forEach(function(ingredient) { %>
-          <li>
-              <strong><%= ingredient.nom %></strong>
-          </li>
-      <% }); %> -->
 
-      <!-- <% console.log(ingredients)%> -->
-      <!-- Fichier ingredients.ejs -->
       <div id="options">
         <a href="/ingredients/creer" class="btn btn-princ" ><img src="/images/icons/add.png"  alt="edit"><p  >Ajouter un ingrédient</p> </a>         <input type="text" class="form-control" id="search" placeholder="Rechercher un ingrédient...">
-       
-  
+
       </div>
-<!-- Barre de recherche -->
-<!-- <div class="container px-2 py-3" id="all"> -->
 
-
-
-    <!-- Tableau Bootstrap -->
     <table class="table align-middle container px-2 py-3 text-center " id="all">
       <thead>
         <tr>
@@ -106,11 +93,11 @@
             <td><%= ingredients[i].nom %></td>
             <td>
         
-              <a href="/ingredients/<%= ingredients[i].id %>" class="btn" id="btn-update" ><img src="/images/icons/edit.png" id="edit" class="del-mod-icons" alt="edit"></a>
+              <a href="/ingredients/<%= ingredients[i].id %>" class="btn btn-update" ><img src="/images/icons/edit.png" class="del-mod-icons edit" alt="edit"></a>
             </td>
             <td>
      
-              <a href="/ingredients/<%= ingredients[i].id %>?action=DELETE" name="<%= ingredients[i].id %>" class="btn" id="btn-del" ><img src="/images/icons/trash.png" id="del" class="del-mod-icons" alt="trash"></a>
+              <a href="/ingredients/<%= ingredients[i].id %>?action=DELETE" name="<%= ingredients[i].id %>" class="btn btn-del" ><img src="/images/icons/trash.png" class="del-mod-icons del" alt="trash"></a>
 
             </td>
           </tr>
