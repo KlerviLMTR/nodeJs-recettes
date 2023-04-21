@@ -26,6 +26,31 @@ class IngredientDAO {
       }
     })
   }
+
+  ajouterIngredient = (nom, prix, unite, callback)=>{
+    const sql = "INSERT INTO ingredient VALUES (null, '"+nom+"', "+prix+", '"+unite+"', '/images/default.svg');";
+    connexion.query(sql,(err,data)=>{
+      if (err)
+      return err;
+      else{
+        callback(data);
+      }
+    })
+  }
+
+  voirFicheIngredient = (id, callback)=>{
+    const sql = "SELECT * FROM ingredient WHERE idIng ="+id+";";
+    console.log(sql);
+
+    connexion.query(sql,(err,data)=>{
+      if (err)
+      return err;
+      else{
+        callback(data);
+      }
+    })
+    
+  }
   
   
 }

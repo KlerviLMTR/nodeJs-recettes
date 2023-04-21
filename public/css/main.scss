@@ -1,7 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
 
 // ----------------------- HEADER -------------------------
 *{
@@ -136,21 +135,29 @@ p{
     padding:10px 10px;
 }
 .btn-annuler:hover{
-    background-color: #7fc0b5;
+    background-color: #ec7575;
     box-shadow: 0px 0px 4px 2px rgba(64, 60, 60, 0.187) ;
     transform:scale(1.1);
     color:white;
     z-index:0;
 }
 
+
 .formulaires{
-    margin-top:30px;
+    margin-top:10px;
     margin-bottom:30px;
-    padding:30px;
+    padding:20px;
     border-radius: 50px;
     box-shadow: 0px 5px 4px 6px rgba(68, 68, 68, 0.132) ;
     .btn{
         margin:30px 10px 0px 0px;
+    }
+    label{
+        margin-top :5px;
+    }
+    hr{
+        border: 3px solid #FEB700;
+        opacity: 100% !important;
     }
 }
 

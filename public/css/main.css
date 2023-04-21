@@ -5,7 +5,6 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -10935,7 +10934,7 @@ p {
 }
 
 .btn-annuler:hover {
-  background-color: #7fc0b5;
+  background-color: #ec7575;
   box-shadow: 0px 0px 4px 2px rgba(64, 60, 60, 0.187);
   transform: scale(1.1);
   color: white;
@@ -10943,14 +10942,21 @@ p {
 }
 
 .formulaires {
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 30px;
-  padding: 30px;
+  padding: 20px;
   border-radius: 50px;
   box-shadow: 0px 5px 4px 6px rgba(68, 68, 68, 0.132);
 }
 .formulaires .btn {
   margin: 30px 10px 0px 0px;
+}
+.formulaires label {
+  margin-top: 5px;
+}
+.formulaires hr {
+  border: 3px solid #FEB700;
+  opacity: 100% !important;
 }
 
 #options {

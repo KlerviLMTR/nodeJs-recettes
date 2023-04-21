@@ -24,6 +24,14 @@ class MiamService {
         return this.#ingredientDAO.supprimerIngredient(id, callback);
     }
 
+    ajouterIngredient = (nom, prix, unite, callback) => {
+        return this.#ingredientDAO.ajouterIngredient(nom, prix,unite, callback);
+    }
+
+    voirFicheIngredient = (id, callback) => {
+        return this.#ingredientDAO.voirFicheIngredient(id, callback);
+    }
+
     toString(){
         return "je suis le service principal de l'application !";
     }

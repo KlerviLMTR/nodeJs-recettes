@@ -18,7 +18,6 @@
     const app = express();
     
     // Pour le traitement des résultats de requêtes
-    //app.use(bodyParser.json());
     
     //Definition du routage pour bootstrap
     app.use(express.static(__dirname + 'public'));
@@ -73,6 +72,8 @@
         res.status(err.status || 500);
         res.render('error');
     });
+
+
     
     module.exports = app
 

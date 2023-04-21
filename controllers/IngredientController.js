@@ -1,7 +1,9 @@
   const express = require('express');
   const router = express.Router();
+  const bodyParser = require('body-parser');
 
-  let ingredientService = require('../services/IngredientService')
+  router.use(bodyParser.urlencoded({extended:true}));
+  let ingredientService = require('../services/IngredientService');
 
   router.get('/', function(req, res, next) {
 
@@ -28,7 +30,37 @@
       };
       ingredientService.supprimerIngredient(id,callback); 
     }
+    //Dans ce cas aperçu de la fiche ingrédient
+    else {
+      let callback = (ingredient) => {
+        console.log(ingredient)
+        res.render('fiche-ingredient-id', {ingredient:ingredient});
+      }
+      ingredientService.voirFicheIngredient(id,callback);
+    }
+  })
 
+  router.post('/', function(req,res,next){
+    const nom = req.body.nom;
+    const prix = req.body.prix;
+    const unite = req.body.unitRadio;
+    callback = (data) => {
+      res.redirect('/ingredients');
+    }
+    ingredientService.ajouterIngredient(nom,prix,unite, callback)
+
+  })
+
+  router.post('/:id', function(req,res,next){
+    const id = req.body.id;
+    const nom = req.body.nom;
+    const prix = parseInt(req.body.prix);
+    const unite = req.body.unitRadio;
+
+    callback = (data)=>{
+      res.redirect('/');
+    }
+    ingredientService.majIngredient(id, nom, prix, unite, callback);
   })
 
   module.exports = router;

@@ -27,6 +27,18 @@ class IngredientService {
         supprimerIngredient  = (id, callback) => {
             return this.#miamService.supprimerIngredient(id, callback);
         }
+
+        ajouterIngredient = (nom, prix, unite, callback) =>{
+            return this.#miamService.ajouterIngredient(nom,prix,unite, callback)
+        }
+
+        voirFicheIngredient = (id, callback) => {
+            let callbackIntermediaire = (ingredientJSON) => {
+                const ingredient = new Ingredient(ingredientJSON.idIng, ingredientJSON.nom, ingredientJSON.cout, ingredientJSON.unite, ingredientJSON.img);
+                callback(ingredient);
+            }
+            return this.#miamService.voirFicheIngredient(id, callback);
+        }
    
     
 }
