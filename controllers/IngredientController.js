@@ -54,13 +54,13 @@
   router.post('/:id', function(req,res,next){
     const id = req.body.id;
     const nom = req.body.nom;
-    const prix = parseInt(req.body.prix);
+    const prix = req.body.prix
     const unite = req.body.unitRadio;
 
     callback = (data)=>{
-      res.redirect('/');
+      res.redirect('/ingredients');
     }
-    ingredientService.majIngredient(id, nom, prix, unite, callback);
+    ingredientService.majIngredient(id, nom, prix, unite, callback)
   })
 
   module.exports = router;

@@ -35,6 +35,11 @@ class MiamService {
     toString(){
         return "je suis le service principal de l'application !";
     }
+
+    majIngredient(id, nom, prix, unite, callback){
+        return this.#ingredientDAO.majIngredient(id, nom, prix, unite, callback);
+    }
+
 }
 // Export du service dans les modules, instancie pour qu'il soit accessible partout en permanence.
 let ingredientDAO = require('../dao/IngredientDAO')

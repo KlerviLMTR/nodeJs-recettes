@@ -1,14 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 30 mars 2023 à 10:08
--- Version du serveur : 5.7.34
--- Version de PHP : 8.1.13
+-- Hôte : mysql
+-- Généré le : ven. 21 avr. 2023 à 12:14
+-- Version du serveur : 8.0.32
+-- Version de PHP : 8.1.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données : `recettes`
@@ -21,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `constituer` (
-  `idRecette` int(11) NOT NULL,
-  `idIng` int(11) NOT NULL,
+  `idRecette` int NOT NULL,
+  `idIng` int NOT NULL,
   `quantite` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `constituer`
@@ -49,7 +56,7 @@ INSERT INTO `constituer` (`idRecette`, `idIng`, `quantite`) VALUES
 (3, 9, 200),
 (3, 10, 3),
 (3, 11, 1),
-(3, 12, 1),
+(3, 12, 50),
 (3, 13, 400),
 (4, 2, 100),
 (4, 3, 8),
@@ -64,37 +71,36 @@ INSERT INTO `constituer` (`idRecette`, `idIng`, `quantite`) VALUES
 --
 
 CREATE TABLE `ingredient` (
-  `idIng` int(11) NOT NULL,
+  `idIng` int NOT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `cout` double DEFAULT NULL,
-  `unite` char(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `unite` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `img` varchar(80) NOT NULL DEFAULT '/images/ingredients/default.svg'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `ingredient`
 --
 
-INSERT INTO `ingredient` (`idIng`, `nom`, `cout`, `unite`) VALUES
-(2, 'Farine', 2.12, 'g'),
-(3, 'Lait', 2.2, 'cl'),
-(4, 'Beurre', 11.12, 'g'),
-(5, 'Fromage rapé', 14.9, 'g'),
-(6, 'Oeuf', 0.5, 'p'),
-(7, 'Lasagne', 4.7, 'g'),
-(8, 'Tomate (purée)', 4.95, 'g'),
-(9, 'Mozzarella', 7.52, 'g'),
-(10, 'Thym', 34.44, 'g'),
-(11, 'Oignon', 2.99, 'p'),
-(12, 'Ail', 15.23, 'p'),
-(13, 'Boeuf (haché)', 15.11, 'g'),
-(14, 'Cabillaud', 27.96, 'g'),
-(15, 'Citron', 0.8, 'p'),
-(16, 'Pommes de terre', 3.45, 'g'),
-(17, 'Brocoli', 3.98, 'g'),
-(19, 'Chocolat à cuire', 12.38, 'g'),
-(20, 'Sucre (en poudre)', 2.2, 'g'),
-(21, 'Crème liquide', 10.2, 'cl'),
-(22, 'Sucre glace', 3.5, 'g');
+INSERT INTO `ingredient` (`idIng`, `nom`, `cout`, `unite`, `img`) VALUES
+(3, 'Lait', 2.2, 'cL', '/images/ing/lait.svg'),
+(5, 'Fromage rapé', 14.9, 'g', '/images/ing/fromage.svg'),
+(8, 'Tomate (purée)', 4.95, 'g', '/images/ing/tomate-puree.svg'),
+(9, 'Mozzarella', 7.52, 'g', '/images/ing/mozza.svg'),
+(10, 'Thym', 34.44, 'g', '/images/default.svg'),
+(11, 'Oignon', 2.99, 'pièce', '/images/ing/oignon.svg'),
+(12, 'Ail', 15.24, 'g', '/images/ing/ail.svg'),
+(13, 'Boeuf (haché)', 15.11, 'g', '/images/ing/boeuf.svg'),
+(14, 'Cabillaud', 27.96, 'g', '/images/ing/poisson.svg'),
+(15, 'Citron', 0.8, 'pièce', '/images/ing/citron.svg'),
+(16, 'Pommes de terre', 3.45, 'g', '/images/ing/patate.svg'),
+(17, 'Brocoli', 3.99, 'g', '/images/ing/brocoli.svg'),
+(19, 'Chocolat à cuire', 12.38, 'g', '/images/ing/chocolat-tablette.svg'),
+(20, 'Sucre (en poudre)', 2.2, 'g', '/images/default.svg'),
+(21, 'Crème liquide', 10.2, 'cL', '/images/default.svg'),
+(22, 'Sucre glace', 3.5, 'g', '/images/ing/sucre.svg'),
+(26, 'Noisettes', 40, 'g', '/images/ing/noisette.svg'),
+(31, 'Beurre', 9.08, 'g', '/images/ing/beurre.svg');
 
 -- --------------------------------------------------------
 
@@ -103,11 +109,11 @@ INSERT INTO `ingredient` (`idIng`, `nom`, `cout`, `unite`) VALUES
 --
 
 CREATE TABLE `recette` (
-  `idrecette` int(11) NOT NULL,
+  `idrecette` int NOT NULL,
   `intitule` varchar(50) DEFAULT NULL,
-  `nbcouverts` smallint(6) DEFAULT '4',
+  `nbcouverts` smallint DEFAULT '4',
   `deroule` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `recette`
@@ -126,11 +132,19 @@ INSERT INTO `recette` (`idrecette`, `intitule`, `nbcouverts`, `deroule`) VALUES
 --
 
 CREATE TABLE `repas` (
-  `idrecette` int(11) NOT NULL,
-  `idutil` int(11) NOT NULL,
-  `nbconvives` smallint(6) DEFAULT NULL,
+  `idRepas` int NOT NULL,
+  `idrecette` int NOT NULL,
+  `nbconvives` smallint DEFAULT NULL,
   `dater` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `repas`
+--
+
+INSERT INTO `repas` (`idRepas`, `idrecette`, `nbconvives`, `dater`) VALUES
+(1, 4, 8, '2023-04-20'),
+(2, 1, 2, '2023-04-25');
 
 -- --------------------------------------------------------
 
@@ -139,9 +153,9 @@ CREATE TABLE `repas` (
 --
 
 CREATE TABLE `utilisateur` (
-  `idutil` int(11) NOT NULL,
+  `idutil` int NOT NULL,
   `pseudo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -177,8 +191,8 @@ ALTER TABLE `recette`
 -- Index pour la table `repas`
 --
 ALTER TABLE `repas`
-  ADD PRIMARY KEY (`idrecette`,`idutil`),
-  ADD KEY `IDUTIL` (`idutil`);
+  ADD PRIMARY KEY (`idRepas`),
+  ADD KEY `REPAS_IBFK_1` (`idrecette`);
 
 --
 -- Index pour la table `utilisateur`
@@ -194,19 +208,25 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `idIng` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idIng` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `recette`
 --
 ALTER TABLE `recette`
-  MODIFY `idrecette` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idrecette` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `repas`
+--
+ALTER TABLE `repas`
+  MODIFY `idRepas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `idutil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idutil` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
@@ -216,5 +236,9 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `repas`
 --
 ALTER TABLE `repas`
-  ADD CONSTRAINT `REPAS_IBFK_1` FOREIGN KEY (`idrecette`) REFERENCES `recette` (`idrecette`),
-  ADD CONSTRAINT `REPAS_IBFK_2` FOREIGN KEY (`idutil`) REFERENCES `utilisateur` (`idutil`);
+  ADD CONSTRAINT `REPAS_IBFK_1` FOREIGN KEY (`idrecette`) REFERENCES `recette` (`idrecette`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

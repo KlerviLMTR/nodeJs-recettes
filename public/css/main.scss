@@ -153,7 +153,7 @@ p{
         margin:30px 10px 0px 0px;
     }
     label{
-        margin-top :5px;
+        margin-top :20px;
     }
     hr{
         border: 3px solid #FEB700;
@@ -161,6 +161,9 @@ p{
     }
 }
 
+#imgIng{
+    height:100px;
+}
 
 #options{
     height:60px;
@@ -235,6 +238,7 @@ p{
     // background-color: #ffe093;
     .img-thumbnail{
         width:45px;
+        height:45px;
         border:none;
     }
 

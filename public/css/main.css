@@ -10952,11 +10952,15 @@ p {
   margin: 30px 10px 0px 0px;
 }
 .formulaires label {
-  margin-top: 5px;
+  margin-top: 20px;
 }
 .formulaires hr {
   border: 3px solid #FEB700;
   opacity: 100% !important;
+}
+
+#imgIng {
+  height: 100px;
 }
 
 #options {
@@ -11020,6 +11024,7 @@ p {
 }
 #all .img-thumbnail {
   width: 45px;
+  height: 45px;
   border: none;
 }
 #all th {

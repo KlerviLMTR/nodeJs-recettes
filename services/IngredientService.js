@@ -15,7 +15,6 @@ class IngredientService {
                     const ingredient = new Ingredient(jsonDAO[i].idIng, jsonDAO[i].nom,null,null, jsonDAO[i].img, null);
                     ingredients.push(ingredient);
 
-                  
                 }
                   //Appel au callback DAO
                   callback(ingredients);
@@ -39,6 +38,13 @@ class IngredientService {
             }
             return this.#miamService.voirFicheIngredient(id, callback);
         }
+        
+        majIngredient = (id, nom, prix, unite, callback) => {
+            return this.#miamService.majIngredient(id, nom, prix, unite, callback);
+
+        }
+
+
    
     
 }
