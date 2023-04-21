@@ -10,8 +10,6 @@
   <script src="/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="/css/main.css">
-  <script src="/js_custom/utils.js"></script>
-
   
   
 </head>
@@ -66,27 +64,20 @@
       <!-- Prevoir margin pour sticky -->
       <div id="main" class="container py-5 px-2">
         
-      
-        <h1> <%= ingredient.nom %></h1>
-
-        <% printChecked = (val1, val2) =>{
-          if(val1 == val2)
-          return 'checked="checked"';
-        }
-        unite = ingredient.unite 
-
-        %>
-
+        
+        <h1>Créer une recette</h1>
         <hr>
-       
+
+        <%= ingredients[0].nom %>
+        
         <div class="container">
-          <form action="/ingredients/<%= ingredient.id %> " method="post" class="formulaires">
+          <form action="/recettes" method="post" class="formulaires">
             <div class="row">
               <div class="col-sm">
                
               </div>
               <div class="col-md d-flex justify-content-center">
-                <img src="<%= ingredient.img %>"  id="imgIng" alt="">
+                <img src="/images/defaultR.svg" alt="" id="imgIng">
               </div>
               <div class="col-sm">
                 
@@ -103,44 +94,31 @@
             <hr>
             <div class="row d-flex justify-content-center">
               <div class="form-group col-lg">
-                <label for="inputName">Nom de l'ingrédient</label>
-                <input type="text" class="form-control" id="inputName" name="nom" placeholder="<%= ingredient.nom %> "required>
+                <label for="inputName">Intitulé de la recette</label>
+                <input type="text" class="form-control" id="inputName" name="nom" placeholder="Saisir le nom de l'ingrédient">
               </div>
             </div>
             <div class="row d-flex justify-content-center">
   
               <div class="form-group col-lg">
-                <label for="inputUnit">Unité de mesure</label><br>
-                <input type="hidden" name="id" value="<%= ingredient.id %>">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="unitRadio" id="radioG" <%= printChecked(unite, "g") %>  value="g">
-                  <label class="form-check-label" for="radioG">g</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="unitRadio" id="radioL" <%= printChecked(unite, "L") %>  value="L">
-                  <label class="form-check-label" for="radioL">L</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="unitRadio" id="radioCl"  <%= printChecked(unite, "cL") %>  value="cL">
-                  <label class="form-check-label" for="radioCl">cL</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="unitRadio" id="radioPiece"  <%= printChecked(unite, "pièce") %> value="pièce">
-                  <label class="form-check-label" for="radioPiece">pièce</label>
-                </div>
+                <label for="couverts">Nombre de couverts</label><br>
+                <input type="number" class="form-control" name="couverts" id="couverts" placeholder="Saisir le nombre de couverts">
+
               </div>
             </div>
             <div class="row d-flex justify-content-center">
               <div class="form-group  col-lg">
-                <label for="inputName">Prix en € au Kg / L / Pièce </label>
-                <input type="number" class="form-control" step=".01" required name="prix" id="inputName" placeholder="<%= ingredient.cout %>">
+                <label for="form10">Instructions</label>
+                <div class="md-form">
+                    <textarea id="form10" class="md-textarea form-control" rows="5"></textarea>
+                  </div>
               </div>
             </div>
             <div class="row d-flex justify-content-center">
               <div class="form-group col-lg-6">
 
-              <button type="submit" class="btn  btn-submit">➜ Modifier l'ingrédient</button>
-              <a href="/ingredients"  class="btn-annuler btn" >Retour</a>
+              <button type="submit" class="btn  btn-submit">➜ Créer la recette</button>
+              <a href="/ingredients"  class="btn-annuler btn" >Annuler</a>
             </div>
           </div>
           </form>
