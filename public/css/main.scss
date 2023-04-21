@@ -4,14 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
 
 // ----------------------- HEADER -------------------------
+*{
+    font-family: 'Poppins', sans-serif;
 
-
-.nav-item{
-    a{
-        font-family: 'Poppins', sans-serif;
-
-    }
 }
+
+
 
 
 #logo{
@@ -69,12 +67,10 @@ h1{
     font-size: 1.5em;
     text-align: center;
     letter-spacing: 3px;
-    font-family: 'Poppins', sans-serif;
 }
 
 p{
     color:rgb(39, 39, 39);
-    font-family: 'Poppins', sans-serif;
     font-size: 1.2em;
     text-align: justify;
     
@@ -106,7 +102,7 @@ p{
 }
 
 
-#btn{
+#btn, .btn-submit{
     margin:0 auto;
     background-color:#FEB700;
     width: 200px;
@@ -121,6 +117,43 @@ p{
 
 
 }
+.btn-submit{
+        color:white;
+        background-color: #4B8178;
+        padding:10px 10px;
+}
+.btn-submit:hover{
+    background-color: #7fc0b5;
+    box-shadow: 0px 0px 4px 2px rgba(64, 60, 60, 0.187) ;
+    transform:scale(1.1);
+    color:white;
+    z-index:0;
+}
+
+.btn-annuler{
+    background-color: #ca4848;
+    color:white;
+    padding:10px 10px;
+}
+.btn-annuler:hover{
+    background-color: #7fc0b5;
+    box-shadow: 0px 0px 4px 2px rgba(64, 60, 60, 0.187) ;
+    transform:scale(1.1);
+    color:white;
+    z-index:0;
+}
+
+.formulaires{
+    margin-top:30px;
+    margin-bottom:30px;
+    padding:30px;
+    border-radius: 50px;
+    box-shadow: 0px 5px 4px 6px rgba(68, 68, 68, 0.132) ;
+    .btn{
+        margin:30px 10px 0px 0px;
+    }
+}
+
 
 #options{
     height:60px;
@@ -171,7 +204,19 @@ p{
     }
 }
 // contenus des vues
+.conteneur-cr{
+    position: relative;
+    background-color: #b2c1bf;
+    width:60%;
+    form{
+        padding:10px;
+    }
 
+
+    .custom-file{
+        background-color: white;
+    }
+}
 // formulaires "all" dynamiques
 #all{
     margin-top:30px;
@@ -227,9 +272,7 @@ p{
         background-color: #72c9ba;
     }
 
-    th,td{
-        font-family: 'Poppins', sans-serif;
-    }
+
 
 
 }

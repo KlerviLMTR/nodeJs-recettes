@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cupcake Factory</title>
+  <title>Keep It Simple, Savory</title>
   <!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
   <script src="/jquery/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
@@ -110,15 +110,19 @@
             </td>
             <td>
      
-              <a href="/ingredients/<%= ingredients[i].id %>?action=DELETE" class="btn" id="btn-del" ><img src="/images/icons/trash.png" id="del" class="del-mod-icons" alt="trash"></a>
+              <a href="/ingredients/<%= ingredients[i].id %>?action=DELETE" name="<%= ingredients[i].id %>" class="btn" id="btn-del" ><img src="/images/icons/trash.png" id="del" class="del-mod-icons" alt="trash"></a>
 
             </td>
           </tr>
         <% } %>
       </tbody>
-    </table>
+    </table>  
   <!-- </div> -->
 
+  <script>
+ 
+
+  </script>
 
 
 

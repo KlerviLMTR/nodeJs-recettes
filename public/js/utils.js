@@ -1,4 +1,6 @@
 
+// Fonctions utilitaires annexes pour notre application
+
 rechercherTab = () =>{
     $(document).ready(function() {
         $("#search").on("keyup", function() {

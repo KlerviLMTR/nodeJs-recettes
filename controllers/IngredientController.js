@@ -12,10 +12,10 @@
     }
 
     ingredientService.voirTousLesIngredients(callback); 
+  });
 
-    //  res.render('ingredients', { ingredients: ingredientTrouves });
-     
-
+  router.get('/creer',function(req,res,next){
+    res.render('fiche-ingredient');
   });
 
   router.get('/:id', function(req,res,next){
@@ -24,14 +24,10 @@
     
     if (action == 'DELETE') {
       let callback = (data) =>{
-        res.send(data);
+        res.redirect('/ingredients');
       };
       ingredientService.supprimerIngredient(id,callback); 
-
     }
-    
-    //
-
 
   })
 
