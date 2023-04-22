@@ -96,14 +96,14 @@
             <div class="row d-flex justify-content-center">
               <div class="form-group col-lg">
                 <label for="inputName">Intitulé de la recette</label>
-                <input type="text" class="form-control" id="inputName" name="nom" placeholder="Saisir le nom de l'ingrédient">
+                <input type="text" class="form-control" id="inputName" name="nom" required placeholder="Saisir le nom de la recette">
               </div>
             </div>
             <div class="row d-flex justify-content-center">
               
               <div class="form-group col-lg">
                 <label for="couverts">Nombre de couverts</label><br>
-                <input type="number" class="form-control" name="couverts" id="couverts" placeholder="Saisir le nombre de couverts">
+                <input type="number" class="form-control" name="couverts" id="couverts" required placeholder="Saisir le nombre de couverts">
                 
               </div>
             </div>
@@ -111,7 +111,7 @@
               <div class="form-group  col-lg">
                 <label for="form10">Instructions</label>
                 <div class="md-form">
-                  <textarea id="form10" class="md-textarea form-control" rows="5"></textarea>
+                  <textarea id="form10" class="md-textarea form-control" name="instructions" required rows="5"></textarea>
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@
                   </tbody>
 
                 </table>
-                <div class="btn btn-primary rounded-0 btn-block" id="insererLigne" style="margin:0 auto;" href="#">Ajouter un ingrédient</div>
+                <div class="btn rounded-0 btn-block btn-submit" id="btn" style="margin:0 auto;" href="#">Ajouter un ingrédient</div>
 
               </div>
               <div class="row d-flex justify-content-center">
@@ -207,13 +207,10 @@ $(function () {
 // Start counting from the third row
 var cpt = 1;
 
-$("#insererLigne").on("click", function (event) {
+$("#btn").on("click", function (event) {
     event.preventDefault();
-    //  <select name="select" id="">
-    //         <option value="2">orange</option>
-    //         <option value="2">chocolat</option>
-    //       </select>
-    let select = ' <select name="select">';
+
+    let select = ' <select name="ingredients" required>';
 
       for(let i=0; i<ingredientsJson.length; i++){
         select+='<option value="'+ingredientsJson[i].id+'">'+ingredientsJson[i].nom+' ('+ingredientsJson[i].unite+')</option>';
@@ -226,7 +223,7 @@ $("#insererLigne").on("click", function (event) {
     // Table columns
     cols += '<th scrope="row">' + cpt + '</th>';
     cols += '<td>'+ select+'</td>';
-    cols += '<td><input class="form-control rounded-3" type="number" name="lastname" placeholder="Quantité"></td>';
+    cols += '<td><input class="form-control rounded-3" type="number" name="quantite" placeholder="Quantité" required></td>';
     cols += '<td><button class="btn btn-danger rounded-3" id ="deleteRow" style="margin:0px;">delete</button></td>';
 
     // Insert the columns inside a row

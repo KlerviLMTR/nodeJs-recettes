@@ -1,30 +1,10 @@
-const Ingredient = require('../models/Ingredient');
+const Ingredient = require('../models/IngredientRecette');
 let recette = require('../models/Recette')
 
 class RecetteDAO {
 
-    // voirToutesLesRecettes = (callback) => {
-    //     const sqlRecettes = "SELECT * FROM recette ORDER BY intitule;";
-    //     const sqlIng = "select idRecette , ingredient.idIng, nom, cout, unite, img from constituer, ingredient where ingredient.idIng = constituer.idIng ORDER BY idrecette";
-
-    //     connexion.query(sqlRecettes, (err,recettes)=>{
-    //       if (err)
-    //       throw err;
-    //       else{
-
-    //         connexion.query(sqlIng, (err, ingredients)=>{
-    //             if (err)
-    //             throw err;
-    //             else{
-    //                 callback(recettes, ingredients);
-    //             }
-    //         })
-    //       }    
-    //     })    
-    //   }
-
     voirToutesLesRecettes = (callback) => {
-      const sql = `select recette.*, constituer.quantite, ingredient.idIng, ingredient.nom, ingredient.cout, ingredient.unite, ingredient.img as imgIng from recette, constituer, ingredient
+      const sql = `select recette.*, constituer.quantite, ingredient.idIng, ingredient.nom, ingredient.cout, constituer.quantite, ingredient.unite, ingredient.img as imgIng from recette, constituer, ingredient
       where recette.idrecette = constituer.idRecette
       and constituer.idIng = ingredient.idIng`;
       connexion.query(sql, (err,data)=>{
@@ -36,6 +16,45 @@ class RecetteDAO {
       })
       
     }
+
+    creerRecette = (recette, callback) =>{
+      console.log(recette);
+      const sql = `insert into recette (intitule, nbCouverts, deroule, img) values ( "${recette.intitule}", ${recette.nbCouverts},"${recette.deroule}", "${recette.img}");`;
+      let promise = new Promise ((resolve,reject)=>{
+        connexion.query(sql, (err, data)=>{
+          if(err)
+            reject(err);
+          else{
+            resolve(data);
+          }
+        })
+        
+      });
+ 
+      promise.then((data)=>{
+        
+        let sql = `INSERT INTO constituer (idIng, idrecette, quantite)  VALUES `;
+        for (let i=0; i<recette.tabIng.length; i++){
+          //TODO A ADAPTER A LA QUANTITE
+          sql+=`(${recette.tabIng[i].ingredient.id}, ${data.insertId}, ${recette.tabIng[i].quantite})`;
+          if(i!= recette.tabIng.length-1){
+            sql+=',';
+          }
+        }
+        connexion.query(sql, (err, data)=>{
+          if(err)
+            throw err;
+          else{
+            // insertId a recup
+            callback(data);
+      }
+        })
+      })
+    }
+
+    // supprimerRecette = (id, callback) =>{
+    //   let sql = `DELETE `
+    // }
     
 }
 

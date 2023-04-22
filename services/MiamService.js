@@ -5,7 +5,7 @@ let utilisateurDAO = require('../dao/UtilisateurDAO')
 const Ingredient = require('../models/Ingredient');
 const Repas = require('../models/Repas');
 const Recette = require('../models/Recette');
-
+const IngredientRecette = require('../models/IngredientRecette');
 
 class MiamService {
     
@@ -24,7 +24,7 @@ class MiamService {
             }
             //Appel au callback DAO
             callback(ingredients);
-            //
+            
         }
         return ingredientDAO.voirTousLesIngredients(callbackIntermediaire);
     }
@@ -56,32 +56,6 @@ class MiamService {
     
     //  -------- RECETTES ----------
     
-    // voirToutesLesRecettes = (callback) =>{
-    //     let callbackIntermediaire = (jsonDAORecettes, jsonDAOIngredients) =>{
-    //         let recettes = [];
-          
-    //         //Parcourir les recettes
-    //         for(let i = 0; i < jsonDAORecettes.length ; i++){
-    //             //Creer le tableau d'ingredient vide pour chaque recette
-    //             let tabIng = new Array();
-    //             const recette = new Recette(jsonDAORecettes[i].idrecette,jsonDAORecettes[i].intitule, jsonDAORecettes[i].nbcouverts,jsonDAORecettes[i].deroule, tabIng, jsonDAORecettes[i].img );
-                
-    //             //parcourir le tableau des ingredients et verifier s'il est present dans la recette en cours
-    //             for (let i = 0 ; i< jsonDAOIngredients.length;i++){
-                    
-    //                 // S'ils ont le meme idrecette, l'ajouter au tableau
-    //                 if(jsonDAOIngredients[i].idRecette == recette.id){
-    //                     //creer l'ingredient
-    //                     let ingredient = new Ingredient(jsonDAOIngredients[i].idIng, jsonDAOIngredients[i].nom, jsonDAOIngredients[i].cout, jsonDAOIngredients[i].unite, jsonDAOIngredients[i].img);       
-    //                      recette.tabIng.push(ingredient)
-    //                 }
-    //             }
-    //             recettes.push(recette);
-    //         }   
-    //         callback(recettes);      
-    //     }
-    //     recetteDAO.voirToutesLesRecettes(callbackIntermediaire);
-    // }
 
     voirToutesLesRecettes = (callback) =>{
         let callbackIntermediaire = (jsonDAO) =>{
@@ -91,7 +65,6 @@ class MiamService {
             for(let i = 0; i < jsonDAO.length ; i++){
                 let recette = this.ajouterRecette(recettes, new Recette(jsonDAO[i].idrecette,jsonDAO[i].intitule, jsonDAO[i].nbcouverts,jsonDAO[i].deroule, [], jsonDAO[i].img ));         
                 this.construireIngredientRecette(recette, jsonDAO[i]);
-
             }   
             callback(recettes);      
         }
@@ -116,10 +89,18 @@ class MiamService {
     }
 
     construireIngredientRecette = (recette, jsonDAOIngredients) =>{
-        let ingredient = new Ingredient(jsonDAOIngredients.idIng, jsonDAOIngredients.nom, jsonDAOIngredients.cout, jsonDAOIngredients.unite, jsonDAOIngredients.imgIng);       
+        let ingredient = new IngredientRecette(new Ingredient(jsonDAOIngredients.quantite,jsonDAOIngredients.idIng, jsonDAOIngredients.nom, jsonDAOIngredients.cout, jsonDAOIngredients.unite, jsonDAOIngredients.imgIng));       
         recette.tabIng.push(ingredient);
+    }
+
+    creerRecette = (recette, callback) =>{
+        recetteDAO.creerRecette(recette,callback);
+    }
+
+    supprimerRecette = (id, callback)=>{
+        recetteDAO.supprimerRecette(id, callback);
     }
 }
 
 
-module.exports = new MiamService(ingredientDAO, recetteDAO, repasDAO, utilisateurDAO)
+module.exports = new MiamService()

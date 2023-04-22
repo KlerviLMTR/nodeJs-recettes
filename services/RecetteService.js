@@ -14,6 +14,13 @@ class RecetteService {
     voirToutesLesRecettes  = (callback) => {
         return this.#miamService.voirToutesLesRecettes(callback);
     }
+    creerRecette = (recette, callback) =>{
+        this.#miamService.creerRecette(recette,callback);
+    }
+
+    supprimerIngredient = (id,callback) => {
+        this.#miamService.supprimerRecette(id,callback);
+    }
 
 
     

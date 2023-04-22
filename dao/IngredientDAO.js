@@ -1,5 +1,5 @@
 const app = require('../app.js');
-const Ingredient = require('../models/Ingredient');
+const Ingredient = require('../models/Ingredient.js');
 
 class IngredientDAO {
   voirTousLesIngredients = (callback) => {
