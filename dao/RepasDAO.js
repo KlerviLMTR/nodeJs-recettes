@@ -1,4 +1,6 @@
+
 let repas = require('../models/Repas')
+
 
 class RepasDAO {
 
@@ -11,6 +13,17 @@ class RepasDAO {
             throw err;
             else{
               callback(data);
+            }
+        })
+    }
+
+    voirTousLesRepas =(callback)=>{
+        let sql = "SELECT repas.idRepas, repas.idrecette, recette.intitule, repas.nbconvives, repas.dater FROM recette, repas WHERE recette.idrecette = repas.idrecette;";
+        connexion.query(sql,(err,data)=>{
+            if (err)
+            throw err;
+            else{
+                callback(data);
             }
         })
     }

@@ -1,7 +1,8 @@
 
 class Repas {
 
-    constructor(recette,date,nbConvives,cout, cetteSemaine) {
+    constructor(id, recette,date,nbConvives,cout, cetteSemaine) {
+        this.id = id;
         this.recette = recette;
         this.date = date;
         this.nbConvives = nbConvives;

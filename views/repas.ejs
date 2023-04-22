@@ -67,11 +67,48 @@
      
 
         <h1>Mes repas</h1>
-
+    
         <hr>
         <div id="options">
           <a href="/repas/creer" class="btn btn-princ" ><img src="/images/icons/add.png"  alt="edit"><p>Ajouter un repas</p> </a>  
         </div>
+        <div id="cards-cont">
+          <div class="row">
+                <% for(let i=0; i<repas.length; i++){ %>
+                  <div class="card cardDate" style="width: 18.5rem;">
+                    <div class="card-header text-center date">
+                    <h5 ><%= repas[i].date.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %></h5>
+                      </div>  
+                    <div class="card-body">
+                      <!-- <img class="card-img-top" id="img-repas"src="/images/couverts.svg" alt="Card image cap"> -->
+                      
+                      <h6 class="card-title text-center"><%= repas[i].recette.intitule %></h6>
+                      <hr>
+
+                      <div class="d-flex  justify-content-center align-items-baseline">
+                        <img src="/images/convives.svg" style="height:30px;padding-right:10px; " alt="">
+                        <p><%= repas[i].nbConvives %> personnes</p>
+                      </div>
+                      <div class="row">
+                        <div class="d-flex  justify-content-center align-items-baseline">
+
+                          <a href="/recettes/<%= repas[i].id %>" class="btn btn-submit">Voir la fiche</a>
+                          <a href="/recettes/<%= repas[i].id %>?action=DELETE" name="<%= repas[i].id %>" class="btn btn-del" ><img src="/images/icons/trash.png" class="del-mod-icons del" alt="trash"></a>
+                        </div>
+                      </div>
+                     
+
+                    </div>
+                  </div>
+                  <% } %>
+            
+            
+           
+          </div>
+          
+          
+        </div>
+
     </div>
   </div>
 </div>
@@ -103,3 +140,8 @@
         
       </body>
       </html>
+
+      <script>
+
+        
+      </script>

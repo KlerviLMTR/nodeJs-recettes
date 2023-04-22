@@ -8,11 +8,10 @@ const Repas = require('../models/Repas');
 router.use(bodyParser.urlencoded({extended:true}));
 
 router.get('/', function(req, res, next) {
-  
-    // let ingredientTrouves = recetteService.voirTousLesIngredients(); 
-  
-    res.render('repas');
-  
+    let callback = (listeRepas)=>{
+      res.render('repas',{repas:listeRepas})
+    }
+    return repasService.voirTousLesRepas(callback);
   });
 
 router.get('/creer', (req, res, next) =>{
@@ -26,7 +25,6 @@ router.get('/creer', (req, res, next) =>{
 
 router.post('/',(req,res,next)=>{
 
-  console.log("BODY :" + JSON.stringify(req.body)+"FIN BODY ");
   let callback = () =>{
     res.render('repas');
   }
@@ -34,6 +32,8 @@ router.post('/',(req,res,next)=>{
 
  return repasService.creerRepas(req.body.recettes,req.body.date,req.body.convives, callback);
 })
+
+
 
 
   

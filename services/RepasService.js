@@ -6,6 +6,10 @@ class RepasService {
         this.#miamService = miamService;
     }
 
+    voirTousLesRepas = (callback) =>{
+        return this.#miamService.voirTousLesRepas(callback);
+    }
+
     recupererRecettes = (callback) => {
         return this.#miamService.voirToutesLesRecettes(callback);
     }
