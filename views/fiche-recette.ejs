@@ -70,9 +70,7 @@
         <hr>
 
       <!-- FOOTER -->
-      
-      
-        
+       
         <div class="container">
           <form action="/recettes" method="post" class="formulaires">
             <div class="row">
@@ -141,12 +139,13 @@
                 <div class="form-group col-lg-6">
                   
                   <button type="submit" class="btn  btn-submit">➜ Créer la recette</button>
-                  <a href="/ingredients"  class="btn-annuler btn" >Annuler</a>
+                  <a href="/recettes"  class="btn-annuler btn" >Annuler</a>
                 </div>
               </div>
             </form>
           </div>
           
+         
           
         </div>
       </div>
@@ -177,36 +176,56 @@
   </html>
 
 <% 
-let selectStr = '<select name="ingredients" id="ing-select">';
+let ingredientsJson = '[';
 
   for(i=0;i<ingredients.length;i++){
-    selectStr+= '<option value="'+ingredients[i].id+'">'+ingredients[i].nom+'('+ingredients[i].unite+')</option>'
+    ingredientsJson+= '{';
+    ingredientsJson+= '"nom":"'+ingredients[i].nom +'"';
+    ingredientsJson+= ',"unite":"'+ingredients[i].unite +'"';
+    ingredientsJson+= ',"id":"'+ingredients[i].id +'"';
+    ingredientsJson+= '}';
+
+    if( i != ingredients.length -1 ){
+      ingredientsJson += ",";
+    }
+
   }
- selectStr+='</select>';
-  
+ ingredientsJson+=']';
 
 %>
 <script>
-  var getSelectStr = "<%= selectStr  %>";
+  var ingredientsJson = JSON.parse('<%- ingredientsJson  %>');
  //var test is now assigned to getTest which will only work on browsers
-console.log(getSelectStr)
+console.log(ingredientsJson)
 </script>  
   <script>
 
 $(function () {
-  var getAfficherSelect= ""; 
+
+
+
 // Start counting from the third row
 var cpt = 1;
 
 $("#insererLigne").on("click", function (event) {
     event.preventDefault();
+    //  <select name="select" id="">
+    //         <option value="2">orange</option>
+    //         <option value="2">chocolat</option>
+    //       </select>
+    let select = ' <select name="select">';
 
+      for(let i=0; i<ingredientsJson.length; i++){
+        select+='<option value="'+ingredientsJson[i].id+'">'+ingredientsJson[i].nom+' ('+ingredientsJson[i].unite+')</option>';
+      }
+
+    select += '</select>'; 
     var newRow = $("<tr>");
     var cols = '';
 
     // Table columns
     cols += '<th scrope="row">' + cpt + '</th>';
-    cols += '<td>'+"<%= selectStr  %>"+'</td>';
+    cols += '<td>'+ select+'</td>';
     cols += '<td><input class="form-control rounded-3" type="number" name="lastname" placeholder="Quantité"></td>';
     cols += '<td><button class="btn btn-danger rounded-3" id ="deleteRow" style="margin:0px;">delete</button></td>';
 
