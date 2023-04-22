@@ -1,6 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import "../../node_modules/bootstrap/scss/bootstrap";
 
 // ----------------------- HEADER -------------------------
 *{
@@ -8,7 +7,15 @@
 
 }
 
+#toto{
+    color:#05c1ab;  
+}
 
+navbar {
+    a{
+        color:#302b2b !important;
+    }
+}
 
 
 #logo{

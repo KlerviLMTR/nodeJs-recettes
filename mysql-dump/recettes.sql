@@ -22,7 +22,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+CREATE database if not exists recettes;
+use recettes;
 --
 -- Structure de la table `constituer`
 --
