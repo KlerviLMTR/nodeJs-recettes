@@ -32,7 +32,7 @@ router.post('/', (req,res,next)=>{
     const nbIng = req.body.ingredients.length;
     let tabIngRecette = [];
     console.log(nbIng)
-    for(let i=0; i<nbIng-1; i++){
+    for(let i=0; i<nbIng; i++){
       tabIngRecette[i] = new IngredientRecette(req.body.quantite[i],new Ingredient (req.body.ingredients[i]));
     }
     console.log(tabIngRecette);
@@ -64,7 +64,7 @@ router.get('/:id',(req,res,next)=>{
   }
   else{
     //Visu simple
-    let callback = (ingredient) =>{
+    let callback = (recette) =>{
       res.render('fiche-recette-id', {recette:recette});
     }
     recetteService.voirFicheRecette(id,callback);
