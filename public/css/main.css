@@ -11061,6 +11061,7 @@ p {
 
 #cards-cont {
   display: flex;
+  margin-bottom: 80px;
 }
 #cards-cont .row {
   justify-content: center;
@@ -11148,6 +11149,7 @@ footer div {
   }
   #main {
     width: 90%;
+    min-height: 110vh;
   }
   section p {
     text-align: left;
