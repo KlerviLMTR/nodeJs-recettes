@@ -28,6 +28,7 @@ router.get('/creer',function(req,res,next){
 
 router.post('/', (req,res,next)=>{
 
+    console.log("BODY"+JSON.stringify(req.body, null, 2)+"FIN BODY")
     //Construire le tableau d'ingredientRecette a partir du formulaire
     const nbIng = req.body.ingredients.length;
     let tabIngRecette = [];
