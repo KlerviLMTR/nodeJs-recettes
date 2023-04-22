@@ -1,5 +1,6 @@
-const Ingredient = require('../models/IngredientRecette');
-let recette = require('../models/Recette')
+const Ingredient = require('../models/Ingredient');
+let Recette = require('../models/Recette')
+let IngredientRecette = require('../models/IngredientRecette')
 
 class RecetteDAO {
 
@@ -18,7 +19,6 @@ class RecetteDAO {
     }
 
     creerRecette = (recette, callback) =>{
-      console.log(recette);
       const sql = `insert into recette (intitule, nbCouverts, deroule, img) values ( "${recette.intitule}", ${recette.nbCouverts},"${recette.deroule}", "${recette.img}");`;
       let promise = new Promise ((resolve,reject)=>{
         connexion.query(sql, (err, data)=>{
@@ -40,6 +40,8 @@ class RecetteDAO {
             sql+=',';
           }
         }
+        sql+=' ON DUPLICATE KEY UPDATE quantite = VALUES(quantite);';
+
         connexion.query(sql, (err, data)=>{
           if(err)
             throw err;
@@ -76,6 +78,27 @@ class RecetteDAO {
 
 
     }
+
+    voirFicheRecette = (id, callback) =>{
+      let sql = `select recette.*, constituer.quantite, ingredient.idIng, ingredient.nom, ingredient.cout, constituer.quantite, ingredient.unite, ingredient.img as imgIng from recette, constituer, ingredient
+      where recette.idrecette = constituer.idRecette
+      and constituer.idIng = ingredient.idIng and recette.idRecette=${id}`;
+      connexion.query(sql, (err, data)=>{
+        if(err)
+          throw err;
+        else{
+          // Mettre en forme le json obtenu 
+          //creer la recette a partir de la premiere ligne renvoyee+ instancier le tab d'ingredients à vide
+          let recette = new Recette (data[0].idrecette, data[0].intitule, data[0].nbcouverts, data[0].deroule, [], data[0].img)
+          //Construire le tableau d'ingredients
+          for (let i=0; i<data.length; i++){
+            let ingredientRecette = new IngredientRecette(data[i].quantite, new Ingredient(data[i].idIng, data[i].nom, data[i].cout, data[i].unite,data[i].imgIng));
+            recette.tabIng.push(ingredientRecette);
+          }
+          callback(recette);
+        }
+      })
+    } 
     
 }
 

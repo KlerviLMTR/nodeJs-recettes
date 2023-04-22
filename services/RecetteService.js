@@ -22,6 +22,10 @@ class RecetteService {
         this.#miamService.supprimerRecette(id,callback);
     }
 
+    voirFicheRecette = (id, callback ) => {
+        this.#miamService.voirFicheRecette(id, callback);
+    }
+
 
     
 }

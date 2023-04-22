@@ -33,7 +33,6 @@
     //Dans ce cas aperçu de la fiche ingrédient
     else {
       let callback = (ingredient) => {
-        console.log(ingredient)
         res.render('fiche-ingredient-id', {ingredient:ingredient});
       }
       ingredientService.voirFicheIngredient(id,callback);

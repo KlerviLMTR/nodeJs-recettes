@@ -100,6 +100,13 @@ class MiamService {
     supprimerRecette = (id, callback)=>{
         recetteDAO.supprimerRecette(id, callback);
     }
+
+    voirFicheRecette = (id, callback) =>{
+        let callbackIntermediaire = (recetteOK) => {
+            callback(recetteOK);
+        }
+        return recetteDAO.voirFicheRecette(id, callbackIntermediaire);
+    }
 }
 
 

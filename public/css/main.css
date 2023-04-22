@@ -62,7 +62,7 @@ h1 {
 
 p {
   color: rgb(39, 39, 39);
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: justify;
 }
 
@@ -133,6 +133,13 @@ p {
   transform: scale(1.1);
   color: white;
   z-index: 0;
+}
+
+#recette {
+  padding: 20px 50px;
+}
+#recette .btn-submit {
+  margin-top: 0;
 }
 
 .formulaires {
@@ -261,15 +268,16 @@ p {
   justify-content: center;
 }
 
+.card-img-top {
+  height: 200px;
+  border: 5px solid #7fc0b5;
+}
+
 .card {
   margin: 8px;
 }
 .card h6 {
   margin-top: 10px;
-}
-.card .card-img-top {
-  height: 200px;
-  border: 5px solid #7fc0b5;
 }
 .card .btn-submit {
   width: 140px;

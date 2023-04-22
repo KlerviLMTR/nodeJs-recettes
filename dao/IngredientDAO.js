@@ -40,7 +40,6 @@ class IngredientDAO {
 
   voirFicheIngredient = (id, callback)=>{
     const sql = "SELECT * FROM ingredient WHERE idIng ="+id+";";
-    console.log(sql);
 
     connexion.query(sql,(err,data)=>{
       if (err)
@@ -54,7 +53,6 @@ class IngredientDAO {
 
   majIngredient = (id, nom, prix, unite, callback ) =>{
     const sql = "UPDATE ingredient SET nom='"+nom+"', cout="+prix+", unite='"+unite+"' WHERE idIng="+id;
-    console.log(sql); 
     connexion.query(sql,(err,data)=>{
       if (err)
       return err;

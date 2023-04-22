@@ -47,9 +47,7 @@ router.post('/', (req,res,next)=>{
       
       recetteService.voirToutesLesRecettes(callback); 
     }
-
     recetteService.creerRecette(recette, callback);
-
 });
 
 router.get('/:id',(req,res,next)=>{
@@ -62,6 +60,14 @@ router.get('/:id',(req,res,next)=>{
       res.redirect('/recettes');
     };
     recetteService.supprimerIngredient(id,callback); 
+  }
+  else{
+    //Visu simple
+    let callback = (recette) =>{
+      res.render('fiche-recette-id', {recette:recette});
+    }
+    recetteService.voirFicheRecette(id,callback);
+
   }
   
 })

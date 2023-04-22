@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keep It Simple, Savory</title>
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -67,96 +66,84 @@
       <div id="main" class="container py-5 px-2">
         
         
-        <h1>Mes recettes</h1>
-        
+        <h1><%= recette.intitule %></h1>
         <hr>
 
-        <div id="options">
-          <a href="/recettes/creer" class="btn btn-princ" ><img src="/images/icons/add.png"  alt="edit"><p  >Ajouter une recette</p> </a>         <input type="text" class="form-control" id="search" placeholder="Rechercher une recette...">  
-        </div>
-          
-          <div id="cards-cont">
+      <!-- FOOTER -->
+       
+        <div class="container">
+            <div  class="formulaires" id="recette">
             <div class="row">
-              
-                  <% for(let i=0; i<recettes.length; i++){ %>
-                    <div class="card" style="width: 18.5rem;">
-                      <div class="card-body">
-                        <img class="card-img-top" src="<%= recettes[i].img %>" alt="Card image cap">
-                        <h6 class="card-title"><%= recettes[i].intitule %></h6>
-                        <hr>
-                        <div class="d-flex  justify-content-center align-items-baseline">
-                          <img src="/images/couverts.svg" style="height:40px;padding-right:10px; " alt="">
-                          <p><%= recettes[i].nbCouverts %> personnes</p>
-                        </div>
-                        <div class="row">
-                          <div class="d-flex  justify-content-center align-items-baseline">
-
-                            <a href="/recettes/<%= recettes[i].id %>" class="btn btn-submit">Voir la fiche</a>
-                            <a href="/recettes/<%= recettes[i].id %>?action=DELETE" name="<%= recettes[i].id %>" class="btn btn-del" ><img src="/images/icons/trash.png" class="del-mod-icons del" alt="trash"></a>
-                          </div>
-                        </div>
-                       
-
-                      </div>
-                    </div>
-                    <% } %>
-              
-              
-             
+              <div class="col-sm">
+                
+              </div>
+              <div class="col-md d-flex justify-content-center">
+                <img src="<%= recette.img %>" class="card-img-top"alt="" id="image recette">
+              </div>
+              <div class="col-sm">
+                
+              </div>
             </div>
-            
-            
+
+            <hr>
+         
+            <div class="row d-flex justify-content-center" >
+              
+              <div class="col-md d-flex justify-content-center align-items-baseline" style="margin-left:20px;">
+                <img src="/images/couverts.svg" alt="couverts" style=" margin-right:20px;height:40px">
+                <h4>Nombre de couverts : <%= recette.nbCouverts %></h4>
+                <!-- <label for="couverts">Nombre de couverts</label><br> -->
+                <!-- <input type="number" class="form-control" name="couverts" id="couverts" required placeholder="Saisir le nombre de couverts"> -->
+                
+              </div>
+            </div>
+            <div class=" ">
+                  <h4>Ingrédients</h4>
+                  <!-- <label for="form10">Instructions</label> -->
+                    <div class="row  d-flex ">
+                    <% for(let i=0; i<recette.tabIng.length; i++){ %>
+                        <div class="d-flex  justify-content-left">
+                            <img src="<%= recette.tabIng[i].ingredient.img %>"  style="height:30px;margin-right:10px"alt="">
+                            <p style="margin-right:10px;"><%= recette.tabIng[i].ingredient.nom %> : </p>
+                            <!-- Ajouter la quantite -->
+                            <p style="margin-right:3px;"><%= recette.tabIng[i].quantite %></p>
+                            <!-- Ajouter l'unite de mesure -->
+                            <p style="margin-right:40px;"><%= recette.tabIng[i].ingredient.unite %></p>
+
+
+                        </div>
+                    <% } %>
+                </div>
+
+            </div>
+
+            <div class="row d-flex justify-content-center">
+              <div class="form-group  col-lg">
+                <h4>Instructions</h4>
+                <!-- <label for="form10">Instructions</label> -->
+                <div class="md-form">
+                <p><%= recette.deroule %></p>
+                  <!-- <textarea id="form10" class="md-textarea form-control" name="instructions" required rows="5"></textarea> -->
+                </div>
+              </div>
+            </div>
+        
+              <div class="row d-flex justify-content-center">
+                    
+                  <a href="/recettes"  class="btn-submit btn" >➜ Revenir à la liste des recettes</a>
+                  <!-- <a href="/recettes"  class="btn-annuler btn" >Annuler</a> -->
+
+              </div>
+            </div>
           </div>
           
-          <!-- Tableau Bootstrap -->
-          
-          <!-- </div> -->
-          
-          <script>
-            //Calculer le nombre de lignes
-          </script>
-          
-          
-          
+         
           
         </div>
       </div>
     </div>
     
     <!-- Fin Main -->
-    <script>
-      function rechRecettes() {
-        // Récupère les caracteres recherches
-        var input = document.getElementById("search");
-        // Récupère les cartes de recettes
-        var cards = document.getElementsByClassName("card");
-        
-        // Convertit les cartes en tableau a partir de toutes les cartes recup par getEleemntsByClassName
-        var cardsArray = Array.prototype.slice.call(cards);
-        
-        // Boucle sur chaque carte pour afficher ou masquer en fonction de la recherche
-        cardsArray.forEach(function(card) {
-          // Récupère le titre de la recette
-          var title = card.querySelector(".card-title").textContent.toLowerCase();
-          
-          // Vérifier si le titre de la recette contient la recherche
-          if (title.indexOf(input.value.toLowerCase()) > -1) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
-        });
-
-        
-      }
-      
-      // Attache la fonction à l'événement "keyup" de l'élément d'entrée de recherche
-      document.getElementById("search").addEventListener("keyup", rechRecettes);
-      
-    </script>
-    
-    <!-- FOOTER -->
-    
     
     <footer>
       <div class=" p-4" id="footerCont">
@@ -176,8 +163,6 @@
         <a  href="https://mdbootstrap.com/">MDBootstrap.com</a>
       </div>
     </footer>
-    
+   
   </body>
   </html>
-  
-  
