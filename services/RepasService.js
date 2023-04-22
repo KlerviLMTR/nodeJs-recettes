@@ -10,8 +10,8 @@ class RepasService {
         return this.#miamService.voirToutesLesRecettes(callback);
     }
 
-    creerRepas = (recette, date, nbConvives, callback) => {
-        return this.#miamService.creerRepas(idRecette, date, nbConvives, callback);
+    creerRepas = (idRecette, date, nbConvives, callback) => {
+            return this.#miamService.creerRepas(idRecette, date, nbConvives, callback);
     }
 
     

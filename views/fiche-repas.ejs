@@ -123,10 +123,6 @@
             </form>
           </div>
 
-          <form action="/repas" method="post">
-            <input type="text" name="texte">
-            <button type="submit">envoyer</button>
-          </form>
           
          
           
@@ -158,41 +154,9 @@
   </body>
   </html>
 
-<% 
-let recettesJson = '[';
-
-  for(i=0;i<recettes.length;i++){
-    recettesJson+= '{';
-    recettesJson+= '"id":"'+recettes[i].id +'",';
-    recettesJson+= '"intitule":"'+recettes[i].intitule +'"';
-
-    recettesJson+= '}';
-
-    if( i != recettes.length -1 ){
-      recettesJson += ",";
-    }
-
-  }
- recettesJson+=']';
-
-%>
-<script>
-  var recettesJson = JSON.parse('<%- recettesJson  %>');
-console.log(recettesJson)
-</script>  
   <script>
-
-
-
-// Start counting from the third row
-
-
-    let select = ' <select name="recette" required>';
-
-      for(let i=0; i<recettesJson.length; i++){
-        select+='<option value="'+recettesJson[i].id+'">'+recettesJson[i].nom+'</option>';
-      }
-
-    select += '</select>'; 
-      console.log(select)
+    // check date du jour
+    date = (new Date()).toISOString().split('T')[0];
+    document.getElementById('date').setAttribute("min", date);
+ 
   </script>

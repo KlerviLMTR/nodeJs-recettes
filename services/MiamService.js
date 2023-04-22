@@ -110,8 +110,24 @@ class MiamService {
 
     // -------- POUR LES REPAS -------------
 
+    //me suis embrouillee , c'est pour la visu
+    // creerRepas = (idRecette, date, nbConvives,callback) => {
+    //     //construire la recette. on va utiliser la DAO recette pour la recuperer
+    //     console.log(idRecette);
+    //     let callbackIntermediaire = (recetteDAORecette) =>{
+    //         let repas = new Repas (recetteDAORecette, date, nbConvives, 0,true);
+
+    //         //Inserer le repas en base 
+    //         console.log(repas)
+    //         callback(repas);
+    //     }
+
+    //     return recetteDAO.voirFicheRecette(idRecette,callbackIntermediaire);
+    // }
+
     creerRepas = (idRecette, date, nbConvives,callback) => {
-        //construire la recette. on va utiliser la DAO recette pour la recuperer 
+        //construire la recette. on va utiliser la DAO recette pour la recuperer
+        repasDAO.creerRepas(idRecette, date, nbConvives,callback);
     }
 
 }
