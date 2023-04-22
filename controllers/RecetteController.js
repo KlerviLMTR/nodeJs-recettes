@@ -11,7 +11,6 @@ router.use(bodyParser.urlencoded({extended:true}));
 
 router.get('/', function(req, res, next) {
   let callback = (listeDesRecettes)=>{
-    console.log(listeDesRecettes[0].tabIng[0])
     res.render('recettes', { recettes: listeDesRecettes });
   }
 
@@ -32,7 +31,8 @@ router.post('/', (req,res,next)=>{
     //Construire le tableau d'ingredientRecette a partir du formulaire
     const nbIng = req.body.ingredients.length;
     let tabIngRecette = [];
-    for(let i=0; i<nbIng; i++){
+    console.log(nbIng)
+    for(let i=0; i<nbIng-1; i++){
       tabIngRecette[i] = new IngredientRecette(req.body.quantite[i],new Ingredient (req.body.ingredients[i]));
     }
     console.log(tabIngRecette);
@@ -64,7 +64,7 @@ router.get('/:id',(req,res,next)=>{
   }
   else{
     //Visu simple
-    let callback = (recette) =>{
+    let callback = (ingredient) =>{
       res.render('fiche-recette-id', {recette:recette});
     }
     recetteService.voirFicheRecette(id,callback);
