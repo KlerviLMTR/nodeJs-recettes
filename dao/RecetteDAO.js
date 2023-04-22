@@ -35,7 +35,6 @@ class RecetteDAO {
         
         let sql = `INSERT INTO constituer (idIng, idrecette, quantite)  VALUES `;
         for (let i=0; i<recette.tabIng.length; i++){
-          //TODO A ADAPTER A LA QUANTITE
           sql+=`(${recette.tabIng[i].ingredient.id}, ${data.insertId}, ${recette.tabIng[i].quantite})`;
           if(i!= recette.tabIng.length-1){
             sql+=',';
@@ -52,9 +51,31 @@ class RecetteDAO {
       })
     }
 
-    // supprimerRecette = (id, callback) =>{
-    //   let sql = `DELETE `
-    // }
+    supprimerRecette = (id, callback) =>{
+      let sql = `DELETE FROM constituer WHERE idRecette = ${id}`;
+      let promise = new Promise ((resolve,reject)=>{
+        connexion.query(sql, (err, data)=>{
+          if(err)
+            reject(err);
+          else{
+            resolve(data);
+          }
+        })
+      });
+      promise.then(() =>{
+        sql = `DELETE FROM recette WHERE idRecette = ${id} `;
+        connexion.query(sql, (err, data)=>{
+          if(err)
+            throw err;
+          else{
+            callback(data);
+          }
+        })
+
+      });
+
+
+    }
     
 }
 
