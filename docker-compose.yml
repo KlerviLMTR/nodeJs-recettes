@@ -1,0 +1,56 @@
+version: "5"
+#Dans docker le nom des hosts correspond au nom des conteneurs
+services:
+  #nom arbitraire 
+  mysql: 
+    container_name: mysql
+    image: mysql:latest #Par défaut on met un host mais ici il est implicite car on va le chercher sur le registry officiel
+    environment:
+      MYSQL_ROOT_PASSWORD: mdp
+    #on va créer un volume "pur docker" pour que le contenu ne soit pas supprimé lors d'un compose down
+    volumes:  
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+      - mysql-recettes:/var/lib/mysql
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    healthcheck:  
+      test: mysql -uroot -pmdp -e "show databases"      
+      interval: 10s
+      retries: 5
+      start_period: 3s
+      timeout: 10s
+
+
+  apache:
+    container_name: apache
+#    image: php:7.4-apache si besoin d'image perso  
+    build: 
+      context: .
+      dockerfile: Dockerfile-php:2 #nom du fichier 
+    # image: php-pdo:2
+    # volumes:
+    #   - ./www:/var/www/html 
+    # ports: 
+    #   - 9000:80
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin:latest
+    ports:
+      - 9999:80
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+
+
+
+
+volumes:
+  #on donne un nom au volume
+  mysql-recettes:

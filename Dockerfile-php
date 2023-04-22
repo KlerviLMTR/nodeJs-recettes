@@ -1,0 +1,5 @@
+FROM php:7.4-apache
+RUN docker-php-ext-install -j$(nproc) opcache pdo_mysql
+ENV MYSQL_CONNECTION=mysql:host=geriadur-mysql;port=3306;dbname=geriadur
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=mdp
