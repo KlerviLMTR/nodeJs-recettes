@@ -107,6 +107,13 @@ class MiamService {
         }
         return recetteDAO.voirFicheRecette(id, callbackIntermediaire);
     }
+
+    // -------- POUR LES REPAS -------------
+
+    creerRepas = (idRecette, date, nbConvives,callback) => {
+        //construire la recette. on va utiliser la DAO recette pour la recuperer 
+    }
+
 }
 
 

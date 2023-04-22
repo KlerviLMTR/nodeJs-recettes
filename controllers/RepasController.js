@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const repasService = require('../services/RepasService')
+const repasService = require('../services/RepasService');
+const { recupererIngredients } = require('../services/RecetteService');
+const { voirToutesLesRecettes } = require('../dao/RecetteDAO');
 
 router.get('/', function(req, res, next) {
   
@@ -9,6 +11,28 @@ router.get('/', function(req, res, next) {
     res.render('repas');
   
   });
+
+router.get('/creer', (req, res, next) =>{
+  // On doit lui fournir les recettes
+    let callback = (recettes) =>{
+      res.render('fiche-repas', {recettes : recettes})
+    }
+
+  return repasService.recupererRecettes(callback);
+})
+
+router.post('/',(req,res,next)=>{
+
+  console.log(req.body)
+
+  let callback = () =>{
+    res.render('repas');
+  }
+  console.log(req.body)
+  // return repasService.creerRepas(req.body.recette,req.body.date,req.body.nbConvives, callback);
+})
+
+
   
   module.exports = router;
 // const express = require('express'); ANCIEN
