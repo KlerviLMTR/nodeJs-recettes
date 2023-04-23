@@ -137,8 +137,12 @@ class MiamService {
             let repasListe = [];
             for (let i=0;i<jsonDAO.length;i++){
                 //Construire le repas avec juste une recette valorisee uniquement de son nom et son id
-                
-                let repas=new Repas(jsonDAO[i].idRepas, new Recette(jsonDAO[i].idrecette, jsonDAO[i].intitule, null,null,null,null),jsonDAO[i].dater,jsonDAO[i].nbconvives,0,true);
+                let repas=new Repas(jsonDAO[i].idRepas, new Recette(jsonDAO[i].idrecette, jsonDAO[i].intitule, null,null,null,null),jsonDAO[i].dater,jsonDAO[i].nbconvives,0,false, false);
+                //Verifier la date du repas, positionner estPasse a vrai si vrai
+                let now = new Date();
+                if(now > repas.date){
+                    repas.estPasse=true;
+                }
                 repasListe.push(repas);
             }
 
@@ -149,7 +153,12 @@ class MiamService {
         repasDAO.voirTousLesRepas(callbackIntermediaire);
     }
 
+    // verifRepasPasse = (date) =>{
+    //     if ()
+    // }
 }
+
+    
 
 
 module.exports = new MiamService()

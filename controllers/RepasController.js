@@ -9,15 +9,21 @@ router.use(bodyParser.urlencoded({extended:true}));
 
 router.get('/', function(req, res, next) {
     let callback = (listeRepas)=>{
+      //Trier le tableau avant de l'envoyer dans la vue
+      listeRepas.sort((a, b) => new Date(b.date) - new Date(a.date));
+      console.log(listeRepas);
       res.render('repas',{repas:listeRepas})
+
     }
     return repasService.voirTousLesRepas(callback);
   });
 
 router.get('/creer', (req, res, next) =>{
   // On doit lui fournir les recettes
-    let callback = (recettes) =>{
-      res.render('fiche-repas', {recettes : recettes})
+    let callback = (repas) =>{
+
+ 
+      res.render('fiche-repas', {repas : repas})
     }
 
   return repasService.recupererRecettes(callback);
