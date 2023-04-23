@@ -11,9 +11,6 @@ router.use(bodyParser.urlencoded({extended:true}));
 
 router.get('/', function(req, res, next) {
   let callback = (listeDesRecettes)=>{
-    //Trier les recettes avant de les envoyer dans la vue
-
-    listeDesRecettes.sort((a, b) => a.intitule.localeCompare(b.intitule));
     res.render('recettes', { recettes: listeDesRecettes });
   }
 
