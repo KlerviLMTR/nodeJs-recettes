@@ -20,10 +20,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/creer', (req, res, next) =>{
   // On doit lui fournir les recettes
-    let callback = (repas) =>{
+    let callback = (recettes) =>{
 
  
-      res.render('fiche-repas', {repas : repas})
+      res.render('fiche-repas', {recettes : recettes})
     }
 
   return repasService.recupererRecettes(callback);
