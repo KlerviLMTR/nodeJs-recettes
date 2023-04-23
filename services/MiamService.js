@@ -153,6 +153,10 @@ class MiamService {
         repasDAO.voirTousLesRepas(callbackIntermediaire);
     }
 
+    supprimerRepas = (id,callback)=>{
+        repasDAO.supprimerRepas(id,callback);
+    }
+
     // verifRepasPasse = (date) =>{
     //     if ()
     // }

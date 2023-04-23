@@ -27,6 +27,17 @@ class RepasDAO {
             }
         })
     }
+
+    supprimerRepas = (idRepas, callback)=>{
+        let sql = `DELETE FROM repas WHERE idRepas = ${idRepas};`;
+        connexion.query(sql,(err,data)=>{
+            if (err)
+            throw err;
+            else{
+                callback(data);
+            }
+        })
+    }
     
 }
 module.exports = new RepasDAO();

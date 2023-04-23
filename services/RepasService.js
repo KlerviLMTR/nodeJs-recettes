@@ -18,6 +18,10 @@ class RepasService {
             return this.#miamService.creerRepas(idRecette, date, nbConvives, callback);
     }
 
+    supprimerRepas = (idRepas, callback)=>{
+        return this.#miamService.supprimerRepas(idRepas,callback);
+    }
+
     
 }
 

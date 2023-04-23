@@ -32,11 +32,22 @@ router.get('/creer', (req, res, next) =>{
 router.post('/',(req,res,next)=>{
 
   let callback = () =>{
-    res.render('repas');
+    res.redirect('repas');
   }
   //creer le repas
-
  return repasService.creerRepas(req.body.recettes,req.body.date,req.body.convives, callback);
+})
+
+router.get('/:id', (req,res,next)=>{
+  const id = req.params.id;
+  const action = req.query.action;
+
+  if (action=="DELETE") {
+    let callback = ()=> {
+      res.redirect('/repas');
+    }
+    return repasService.supprimerRepas(id, callback);
+  }
 })
 
 
