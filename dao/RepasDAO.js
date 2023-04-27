@@ -38,6 +38,17 @@ class RepasDAO {
             }
         })
     }
-    
+
+    voirFicheRepas = (idRepas,callback)=>{
+        let sql = `SELECT * FROM repas WHERE idRepas = ${idRepas};`;
+        connexion.query(sql,(err,data)=>{
+            if (err)
+            throw err;
+            else{
+                callback(data);
+            }
+        })
+    }
+ 
 }
 module.exports = new RepasDAO();

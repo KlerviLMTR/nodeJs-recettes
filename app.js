@@ -11,7 +11,6 @@
     const recetteRouter = require('./controllers/RecetteController');
     const repasRouter = require('./controllers/RepasController');
     const coursesRouter = require('./controllers/CoursesController');
-    const utilisateurRouter = require('./controllers/UtilisateurController');
 
     
     // demarrage d'express
@@ -41,7 +40,6 @@
     app.use('/recettes', recetteRouter);
     app.use('/repas', repasRouter);
     app.use('/liste', coursesRouter);
-    app.use('/utilisateur', utilisateurRouter);
 
     const dotenv = require('dotenv').config({
         path: path.join(__dirname, '.env')

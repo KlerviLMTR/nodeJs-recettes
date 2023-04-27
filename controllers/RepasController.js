@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
       listeRepas.sort((a, b) => new Date(b.date) - new Date(a.date));
       console.log(listeRepas);
       res.render('repas',{repas:listeRepas})
+      //  res.render('repas',{err:"raté", repas:listeRepas})
 
     }
     return repasService.voirTousLesRepas(callback);
@@ -43,10 +44,20 @@ router.get('/:id', (req,res,next)=>{
   const action = req.query.action;
 
   if (action=="DELETE") {
-    let callback = ()=> {
+    let callback = (err)=> {
+      if(err){
+        res.render('repas',{erreur:err})
+      }
       res.redirect('/repas');
     }
     return repasService.supprimerRepas(id, callback);
+  }
+  else{
+    let callback = (repas) =>{
+
+      res.render('fiche-repas-id', {repas:repas});
+    }
+    return repasService.voirFicheRepas(id,callback);
   }
 })
 

@@ -1,5 +1,9 @@
 # nodeJs-recettes
 
+Bienvenue !
+
+## MISE EN ROUTE
+
 ## ROUTES API
 
 1. Les ingredients : ingredientController.js

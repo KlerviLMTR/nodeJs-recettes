@@ -41,9 +41,7 @@
           <li class="nav-item p-2">
             <a class="nav-link active" href="/liste">Liste des courses</a>
           </li>
-          <li class="nav-item p-2">
-            <a class="nav-link" href="/utilisateur">Profil</a>
-          </li>
+          
         </ul>
       </div>
     </div>
@@ -67,10 +65,43 @@
      
 
         <h1>Ma liste de courses</h1>
-      
-      
         <hr>
+        
+        <div class="container" id="all">
+          <ul class="list-group list-group-flush">
+            <% 
+            let totalCourses = 0;
+            for(let i=0; i<listeIngredients.length;i++){ 
+              let qte = parseFloat(listeIngredients[i].quantite);
+              let cout = parseFloat(listeIngredients[i].coutUnitaire);
+              let unite = listeIngredients[i].unite;
+              let prixTotalIng = qte * cout
+              if(unite == "g"){
+                prixTotalIng = prixTotalIng*0.003;
+              }
+              else if(unite == "cL"){
+                prixTotalIng = prixTotalIng*0.00005;
 
+              }
+              totalCourses+= prixTotalIng ;
+
+              prixTotalIng = Number(prixTotalIng).toFixed(4);
+
+
+              %>
+              
+              <li class="list-group-item">
+                <img src="<%= listeIngredients[i].img %>" style="height:40px; margin-right:20px;"alt="icone ingredient">
+                <%= listeIngredients[i].nom  %> : <%= qte %> <%= unite %> : <strong><%= prixTotalIng  %> €</strong></li>
+    
+              <% }
+              totalCourses = Number(totalCourses).toFixed(2); 
+
+              %>
+
+          </ul>
+          <h2 class="p-2 m-2 text-center" id="total" style="border:3px solid rgb(118, 180, 175);border-radius: 5px; ">Total : <%= totalCourses %> € </h2>
+        </div>
        
     </div>
   </div>

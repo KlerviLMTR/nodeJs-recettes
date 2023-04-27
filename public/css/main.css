@@ -11,6 +11,12 @@
   color: #302b2b !important;
 }
 
+#cout {
+  border: 1px solid #76b4af;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 #main {
   min-height: 65vh;
 }

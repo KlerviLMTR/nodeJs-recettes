@@ -22,6 +22,10 @@ class RepasService {
         return this.#miamService.supprimerRepas(idRepas,callback);
     }
 
+    voirFicheRepas = (idRepas, callback)=>{
+        return this.#miamService.voirFicheRepas(idRepas,callback);
+    }
+
     
 }
 
